@@ -1,0 +1,17 @@
+{
+  "name": "نضار للتنظيف بجدة — NADAR CLEANING",
+  "short_name": "نضار",
+  "description": "شركة نضار لخدمات التنظيف المتخصصة للمنازل والفلل والمفروشات بمدينة جدة",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF9F5",
+  "theme_color": "#123F3A",
+  "icons": [
+    {
+      "src": "/assets/images/brand/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+# Robots.txt for NADAR CLEANING (نضار للتنظيف بجدة)
+# https://nadarclean.com
+
+User-agent: *
+Allow: /
+Allow: /assets/css/
+Allow: /assets/js/
+Allow: /assets/images/
+
+# Sitemap location
+Sitemap: https://nadarclean.com/sitemap.xml

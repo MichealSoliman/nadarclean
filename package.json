@@ -1,0 +1,22 @@
+{
+  "name": "nadarclean",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:html": "node ./scripts/build-core-pages.js && node ./scripts/build-service-pages.js && node ./scripts/build-blog-pages.js",
+    "build:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/style.css --minify",
+    "build": "npm run build:html && npm run build:css",
+    "watch:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/style.css --watch",
+    "serve": "npx -y serve . -l 3000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "autoprefixer": "^10.6.2",
+    "postcss": "^8.5.32",
+    "tailwindcss": "^3.4.19"
+  }
+}
