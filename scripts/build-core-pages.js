@@ -90,7 +90,7 @@ function buildHomePage() {
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
             <a href="#services-overview" class="btn-secondary text-base px-6 py-4">
-              <span>استكشف الخدمات (12 خدمة)</span>
+              <span>استكشف الخدمات (${servicesList.length} خدمة)</span>
             </a>
           </div>
 

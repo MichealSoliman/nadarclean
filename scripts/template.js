@@ -24,6 +24,8 @@ const servicesList = [
   { slug: 'bathroom-cleaning', name: 'تنظيف حمامات', title: 'تنظيف حمامات بجدة', icon: 'bathroom', desc: 'إزالة التكلسات والاصفرار وتطهير السيراميك والمرافق' },
   { slug: 'post-construction-cleaning', name: 'تنظيف بعد التشطيب', title: 'شركة تنظيف بعد التشطيب بجدة', icon: 'construction', desc: 'إزالة غبار البناء وبقايا الدهانات وتجهيز العقار للسكن' },
   { slug: 'deep-cleaning', name: 'تنظيف عميق', title: 'تنظيف عميق بجدة', icon: 'deep', desc: 'خدمة تفصيلية تصل لأدق الزوايا وخلف الأجهزة والأسطح' },
+  { slug: 'hospital-cleaning', name: 'تنظيف مستشفيات', title: 'شركة تنظيف مستشفيات بجدة', icon: 'hospital', desc: 'تعقيم وتطهير طبي معتمد للمستشفيات والمراكز الصحية والعيادات' },
+  { slug: 'building-cleaning', name: 'تنظيف عماير', title: 'شركة تنظيف عماير بجدة', icon: 'building', desc: 'نظافة شاملة للمباني والعماير السكنية والمداخل والواجهات والسلالم' },
 ];
 
 // 5 Blog Articles Definitions
@@ -35,7 +37,7 @@ const blogList = [
     category: 'نصائح منزلية',
     date: '2026-10-15',
     readTime: '6 دقائق قراءة',
-    image: '/assets/images/blog/home-cleaning-guide.webp'
+    image: '/assets/images/blog/home-cleaning-guide.jpg'
   },
   {
     slug: 'how-to-clean-sofas',
@@ -44,7 +46,7 @@ const blogList = [
     category: 'المفروشات والكنب',
     date: '2026-10-18',
     readTime: '5 دقائق قراءة',
-    image: '/assets/images/blog/sofa-cleaning.webp'
+    image: '/assets/images/blog/sofa-cleaning.jpg'
   },
   {
     slug: 'house-cleaning-prices-jeddah',
@@ -53,7 +55,7 @@ const blogList = [
     category: 'دليل الأسعار',
     date: '2026-10-20',
     readTime: '7 دقائق قراءة',
-    image: '/assets/images/blog/house-cleaning-prices.webp'
+    image: '/assets/images/blog/house-cleaning-prices.jpg'
   },
   {
     slug: 'tile-grout-cleaning',
@@ -62,7 +64,7 @@ const blogList = [
     category: 'الأرضيات والأسطح',
     date: '2026-10-22',
     readTime: '5 دقائق قراءة',
-    image: '/assets/images/blog/tile-grout-cleaning.webp'
+    image: '/assets/images/blog/tile-grout-cleaning.jpg'
   },
   {
     slug: 'post-construction-cleaning-jeddah',
@@ -71,7 +73,7 @@ const blogList = [
     category: 'ما بعد التشطيب',
     date: '2026-10-25',
     readTime: '6 دقائق قراءة',
-    image: '/assets/images/blog/post-construction-cleaning.webp'
+    image: '/assets/images/blog/post-construction-cleaning.jpg'
   }
 ];
 
@@ -101,6 +103,10 @@ function getServiceIconSvg(iconName) {
       return `<svg class="w-5 h-5 text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>`;
     case 'deep':
       return `<svg class="w-5 h-5 text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>`;
+    case 'hospital':
+      return `<svg class="w-5 h-5 text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M12 7v6m-3-3h6m-5 10v-4a1 1 0 011-1h2a1 1 0 011 1v4m-4 0h4"/></svg>`;
+    case 'building':
+      return `<svg class="w-5 h-5 text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 4h1m4 0h1m-5 4v-4a1 1 0 011-1h2a1 1 0 011 1v4m-4 0h4"/></svg>`;
     default:
       return `<svg class="w-5 h-5 text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>`;
   }
@@ -227,7 +233,7 @@ function renderHeader(currentPath) {
       <!-- Mobile Services Accordion -->
       <div>
         <button type="button" data-target="mobile-services-list" aria-expanded="false" class="mobile-submenu-toggle w-full flex items-center justify-between px-3 py-2.5 rounded-xl font-medium text-charcoal hover:bg-mint text-right">
-          <span>خدماتنا (12 خدمة)</span>
+          <span>خدماتنا (14 خدمة)</span>
           <svg class="chevron-icon w-4 h-4 transition-transform text-muted-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div id="mobile-services-list" class="hidden pr-3 pl-1 py-1 space-y-1 border-r-2 border-teal-700/20 mr-3 mt-1">
@@ -322,14 +328,15 @@ function renderFooter() {
 
         <!-- Column 3: Services (Part 1) -->
         <div class="space-y-3">
-          <h3 class="text-base font-bold text-white border-r-2 border-teal-500 pr-2">خدمات المساحات</h3>
+          <h3 class="text-base font-bold text-white border-r-2 border-teal-500 pr-2">خدمات المساحات والمباني</h3>
           <ul class="space-y-2 text-sm text-ivory-200/80">
             <li><a href="/house-cleaning/" class="hover:text-teal-400 transition">تنظيف منازل بجدة</a></li>
             <li><a href="/villa-cleaning/" class="hover:text-teal-400 transition">تنظيف فلل بجدة</a></li>
             <li><a href="/apartment-cleaning/" class="hover:text-teal-400 transition">تنظيف شقق بجدة</a></li>
+            <li><a href="/building-cleaning/" class="hover:text-teal-400 transition">تنظيف عماير بجدة</a></li>
             <li><a href="/office-cleaning/" class="hover:text-teal-400 transition">تنظيف مكاتب بجدة</a></li>
+            <li><a href="/hospital-cleaning/" class="hover:text-teal-400 transition">تنظيف مستشفيات بجدة</a></li>
             <li><a href="/post-construction-cleaning/" class="hover:text-teal-400 transition">تنظيف بعد التشطيب</a></li>
-            <li><a href="/deep-cleaning/" class="hover:text-teal-400 transition">تنظيف عميق تفصيلي</a></li>
           </ul>
         </div>
 
@@ -338,6 +345,7 @@ function renderFooter() {
           <h3 class="text-base font-bold text-white border-r-2 border-teal-500 pr-2">المفروشات والتعقيم</h3>
           <ul class="space-y-2 text-sm text-ivory-200/80">
             <li><a href="/steam-cleaning/" class="hover:text-teal-400 transition">تنظيف بالبخار</a></li>
+            <li><a href="/deep-cleaning/" class="hover:text-teal-400 transition">تنظيف عميق تفصيلي</a></li>
             <li><a href="/sofa-cleaning/" class="hover:text-teal-400 transition">تنظيف كنب بجدة</a></li>
             <li><a href="/carpet-cleaning/" class="hover:text-teal-400 transition">تنظيف سجاد وموكيت</a></li>
             <li><a href="/majlis-cleaning/" class="hover:text-teal-400 transition">تنظيف مجالس بجدة</a></li>

@@ -135,7 +135,7 @@ const articlesData = {
     category: 'نصائح منزلية',
     datePublished: '2026-10-15',
     readTime: '6 دقائق قراءة',
-    image: '/assets/images/blog/home-cleaning-guide.webp',
+    image: '/assets/images/blog/home-cleaning-guide.jpg',
     contentHtml: `
       <p class="lead text-lg text-emerald-800 font-medium leading-relaxed">
         يتميز السكن في مدينة جدة بأجوائه الساحلية الجميلة، لكنه في الوقت ذاته يفرض تحديات خاصة في نظافة المنازل؛ فالرطوبة المرتفعة مع حركة الرياح المحملة بذرات الغبار الناعم تجعل الأتربة تلتصق بالأسطح والمفروشات سريعاً إن لم تتبع الأسرة خطة تنظيف عملية ومنتظمة.
@@ -199,7 +199,7 @@ const articlesData = {
     category: 'المفروشات والكنب',
     datePublished: '2026-10-18',
     readTime: '5 دقائق قراءة',
-    image: '/assets/images/blog/sofa-cleaning.webp',
+    image: '/assets/images/blog/sofa-cleaning.jpg',
     contentHtml: `
       <p class="lead text-lg text-emerald-800 font-medium leading-relaxed">
         الكنب هو القطعة المركزية الأكثر دفئاً واستخداماً في الصالة، لكنه في الوقت نفسه الأكثر عرضة لانسكاب السوائل، بقع الطعام، وتراكم الغبار. التعامل الخاطئ مع بقع الكنب قد يحول بقعة سطحية صغيرة إلى تلف دائم في النسيج أو تغير في درجات الألوان.
@@ -271,7 +271,7 @@ const articlesData = {
     category: 'دليل الأسعار',
     datePublished: '2026-10-20',
     readTime: '7 دقائق قراءة',
-    image: '/assets/images/blog/house-cleaning-prices.webp',
+    image: '/assets/images/blog/house-cleaning-prices.jpg',
     contentHtml: `
       <p class="lead text-lg text-emerald-800 font-medium leading-relaxed">
         «كم سعر تنظيف الشقة؟» أو «بكم تنظفون الفيلا؟» هما أكثر الأسئلة التي يستقبلها فريق خدمة العملاء يومياً في جدة. الحقيقة التي يتعامل بها كل مزود خدمة محترف هي أنه لا يوجد رقم عشوائي ثابت ينطبق على كل البيوت؛ فكل عقار له مساحته، حالته، ونوعية الأسطح والمفروشات التي يحتوي عليها.
@@ -347,7 +347,7 @@ const articlesData = {
     category: 'الأرضيات والأسطح',
     datePublished: '2026-10-22',
     readTime: '5 دقائق قراءة',
-    image: '/assets/images/blog/tile-grout-cleaning.webp',
+    image: '/assets/images/blog/tile-grout-cleaning.jpg',
     contentHtml: `
       <p class="lead text-lg text-emerald-800 font-medium leading-relaxed">
         قد يكون بلاط الأرضيات جديداً وفخماً، لكن اسوداد فواصل الترويبة الأسمنتية وتراكم الدهون والتكلسات الجيرية عليها يُفقد الأرضية بريقها ويمنح المكان مظهراً قديماً ومهملاً. إليك الطريقة الصحيحة علمياً وعملياً لتنظيف الفواصل دون إتلاف لمعان البلاط.
@@ -400,7 +400,7 @@ const articlesData = {
     category: 'ما بعد التشطيب',
     datePublished: '2026-10-25',
     readTime: '6 دقائق قراءة',
-    image: '/assets/images/blog/post-construction-cleaning.webp',
+    image: '/assets/images/blog/post-construction-cleaning.jpg',
     contentHtml: `
       <p class="lead text-lg text-emerald-800 font-medium leading-relaxed">
         الوصول إلى نهاية مرحلة تشطيب الفيلا أو الشقة في جدة هو إنجاز مفرح، ولكن مواجهة العقار وهو مغطى بغبار الجبس الأبيض، ورذاذ الدهانات على النوافذ، وبقايا الترويبة والإسمنت على البورسلين قد تكون تجربة شاقة ومربكة إن لم تتبع منهجية منظمة خطوة بخطوة.

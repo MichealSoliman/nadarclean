@@ -25,6 +25,8 @@ const requiredFiles = [
   'bathroom-cleaning/index.html',
   'post-construction-cleaning/index.html',
   'deep-cleaning/index.html',
+  'hospital-cleaning/index.html',
+  'building-cleaning/index.html',
   'blog/index.html',
   'blog/home-cleaning-guide-jeddah/index.html',
   'blog/how-to-clean-sofas/index.html',
