@@ -29,20 +29,28 @@ function writeHtml(relPath, html) {
 function buildHomePage() {
   const homepageFaqs = [
     {
-      q: 'كيف يمكنني حجز موعد تنظيف لدى شركة نضار؟',
-      a: 'يمكنك الحجز بسهولة عبر الاتصال المباشر برقم الهاتف، أو إرسال رسالة واتساب توضح نوع العقار وحجمه والموعد المفضل. يقوم فريق خدمة العملاء بتأكيد التفاصيل وتزويدك بعرض السعر المناسب فوراً.'
+      q: 'ما الذي يميز شركة «نضار» عن العمالة الفردية غير المنظمة في جدة؟',
+      a: 'تلتزم شركة نضار بعقود عمل واضحة، أجهزة ومعدات استخلاص وبخار متطورة، منظفات ومطهرات مصرحة بيئياً وصحياً، وإشراف ميداني مباشر يضمن الحفاظ التام على أثاثك وخصوصية منزلك دون أي مفاجآت في الجودة أو التكلفة.'
     },
     {
-      q: 'هل أحتاج لتوفير أي مواد أو أدوات تنظيف من جانبي؟',
-      a: 'نحن نحضر معنا كافة المعدات الاحترافية (مكانس شفط صناعية، أجهزة بخار، ماكينات جلي وتلميع الأرضيات) والمنظفات المتخصصة المصرحة. لا يُطلب من العميل سوى توفير مصدر للماء والكهرباء في الموقع.'
+      q: 'هل توفرون عقود تنظيف دورية (أسبوعية أو شهرية) للمنازل والمنشآت بجدة؟',
+      a: 'نعم، نوفر جداول زيارات مرنة تناسب الشقق، الفلل، والمكاتب في كافة أحياء جدة بحسب التكرار المفضل (أسبوعي، نصف شهري، أو شهري) وبمواعيد ثابتة تناسب جدول أعمالك اليومي.'
     },
     {
-      q: 'ما هي العوامل التي تحدد تكلفة خدمة التنظيف؟',
-      a: 'تعتمد التكلفة على مساحة العقار الإجمالية، وعدد الغرف ودورات المياه، ونوع التنظيف (تنظيف دوري معتاد، تنظيف عميق، أو تنظيف بعد التشطيب)، ووجود خدمات إضافية مثل غسيل الكنب والمفروشات. يمكنك قراءة التفاصيل الكاملة في صفحة معايير الأسعار.'
+      q: 'كيف تتعاملون مع خصوصية مناخ جدة وتأثير الرطوبة والغبار على المفروشات؟',
+      a: 'نعتمد تقنية التنظيف بالبخار الساخن مع الشفط العميق والتجفيف الفوري؛ مما يقضي على بكتيريا الرطوبة والروائح الكريهة ويسحب الأتربة العالقة بأنسجة الكنب والسجاد والمجالس دون أن تترك أي بلل أو رطوبة زائدة.'
     },
     {
-      q: 'كم تستغرق عملية التنظيف عادة؟',
-      a: 'تتراوح المدة للشقق المتوسطة بين 3 إلى 5 ساعات، بينما تتطلب الفلل الكبيرة أو أعمال ما بعد التشطيب يوماً كاملاً أو أكثر بحسب حجم الفريق وحجم العمل. نحرص دائماً على الالتزام بالوقت المتفق عليه مسبقاً.'
+      q: 'هل يمكن حجز أكثر من خدمة في زيارة واحدة مثل تنظيف الشقة وغسيل الكنب؟',
+      a: 'بالتأكيد، يمكنك طلب باقة تنظيف متكاملة تشمل نظافة المنزل أو الفيلا مع غسيل الكنب والسجاد والمجالس في اليوم نفسه؛ حيث نرسل طاقماً مجهزاً بكافة أجهزة الأرضيات والمفروشات لإنجاز كل شيء في زيارة واحدة.'
+    },
+    {
+      q: 'كيف تضمنون عدم تضرر الأرضيات الرخامية أو الأقمشة الحساسة أثناء التنظيف؟',
+      a: 'يقوم المشرف أولاً بفحص نوع الخامة؛ فالرخام نستخدم معه ماكينات صقل خاصة ومحاليل متعادلة الحموضة لمنع الكشط والتآكل، كما نختبر محاليل تنظيف الأقمشة على زاوية غير ظاهرة قبل البدء لضمان ثبات اللون وسلامة النسيج.'
+    },
+    {
+      q: 'هل تغطون جميع أحياء جدة بما في ذلك المخططات السكنية الجديدة؟',
+      a: 'نعم، تصل سيارات وفرق «نضار» المجهزة إلى شمال جدة (مثل أبحر والشاطئ والمحمدية)، ووسط جدة (مثل الروضة والسلامة)، وجنوب وشرق جدة (مثل الصفا والسامر والتيسير) وجميع المخططات المجاورة.'
     }
   ];
 
@@ -61,47 +69,66 @@ function buildHomePage() {
         <div class="lg:col-span-7 space-y-6 text-right">
           <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mint text-emerald-800 text-xs font-bold border border-teal-700/20">
             <span class="w-2 h-2 rounded-full bg-teal-700"></span>
-            نقاء تراه وتشعر به في كل زاوية
+            نقاء تراه وتشعر به في كل ركن
           </div>
           
           <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-emerald-800 leading-[1.25] tracking-tight">
-            شركة تنظيف بجدة — خدمات راقية للمنازل والفلل والمفروشات
+            شركة تنظيف بجدة — حلول احترافية متكاملة لبيئة نقية تدوم
           </h1>
           
           <p class="text-base sm:text-lg text-muted-500 leading-relaxed max-w-2xl">
-            في «نضار للتنظيف»، نعيد صياغة مفهوم النظافة المنزلية والتجارية. نقدم حلولاً منهجية متكاملة لتنظيف الفلل، الشقق، الكنب، السجاد، والمكاتب في كافة أحياء جدة، بمواد آمنة وفرق عمل مدرّبة تعتني بممتلكاتك كأنها ملكها.
+            نقدم في «نضار للتنظيف» خدمات تنظيف بجدة بمعايير فندقية رفيعة؛ تشمل تنظيف منازل وفلل وشقق بجدة، مع غسيل كنب وسجاد بجدة بأحدث أجهزة الاستخلاص والتعقيم بالبخار. طواقم مدربة، مواد مصرحة، والتزام تام بالأمانة ودقة المواعيد.
           </p>
 
           <!-- Action buttons -->
           <div class="flex flex-wrap items-center gap-4 pt-2">
-            <a href="/contact/" class="btn-primary text-base px-7 py-4 shadow-lg shadow-emerald-800/10">
-              <span>طلب عرض سعر ومعاينة</span>
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            <a href="tel:${PHONE_INT}" class="btn-primary text-base px-7 py-4 shadow-lg shadow-emerald-800/10 flex items-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              <span>اتصل الآن: ${PHONE_DISPLAY}</span>
             </a>
-            <a href="#services-overview" class="btn-secondary text-base px-6 py-4">
-              <span>استكشف الخدمات (${servicesList.length} خدمة)</span>
+            <a href="${WHATSAPP_URL}?text=${encodeURIComponent('السلام عليكم، أريد الاستفسار عن خدمات شركة نضار للتنظيف وحجز موعد في جدة')}" target="_blank" rel="noopener noreferrer" class="btn-secondary text-base px-6 py-4 flex items-center gap-2 text-emerald-800 hover:text-teal-700">
+              <svg class="w-5 h-5 text-emerald-800" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.073.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1 1.024z"/></svg>
+              <span>محادثة واتساب سريعة</span>
+            </a>
+            <a href="#services-overview" class="text-sm font-bold text-teal-700 hover:text-emerald-800 transition py-2 px-3">
+              استكشف الخدمات (${servicesList.length} خدمة) &larr;
             </a>
           </div>
 
           <!-- Trust Badges -->
-          <div class="pt-6 border-t border-charcoal/10 grid grid-cols-3 gap-4 text-xs text-charcoal">
-            <div class="flex items-center gap-2">
-              <div class="p-1.5 rounded-lg bg-mint text-teal-700">
+          <div class="pt-6 border-t border-charcoal/10 grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs text-charcoal">
+            <div class="flex items-center gap-2 p-2 rounded-lg bg-white/60 border border-charcoal/5">
+              <div class="p-1.5 rounded-md bg-mint text-teal-700 flex-shrink-0">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
               </div>
               <span class="font-bold">مواد آمنة ومصرحة</span>
             </div>
-            <div class="flex items-center gap-2">
-              <div class="p-1.5 rounded-lg bg-mint text-teal-700">
+            <div class="flex items-center gap-2 p-2 rounded-lg bg-white/60 border border-charcoal/5">
+              <div class="p-1.5 rounded-md bg-mint text-teal-700 flex-shrink-0">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </div>
-              <span class="font-bold">دقة في المواعيد</span>
+              <span class="font-bold">التزام تام بالمواعيد</span>
             </div>
-            <div class="flex items-center gap-2">
-              <div class="p-1.5 rounded-lg bg-mint text-teal-700">
+            <div class="flex items-center gap-2 p-2 rounded-lg bg-white/60 border border-charcoal/5">
+              <div class="p-1.5 rounded-md bg-mint text-teal-700 flex-shrink-0">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
               </div>
-              <span class="font-bold">ضمان رضا العميل</span>
+              <span class="font-bold">إشراف ميداني مباشر</span>
+            </div>
+            <div class="flex items-center gap-2 p-2 rounded-lg bg-white/60 border border-charcoal/5">
+              <div class="p-1.5 rounded-md bg-mint text-teal-700 flex-shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+              </div>
+              <span class="font-bold">تسعير محدد مسبقاً</span>
+            </div>
+            <div class="flex items-center gap-2 p-2 rounded-lg bg-white/60 border border-charcoal/5">
+              <div class="p-1.5 rounded-md bg-mint text-teal-700 flex-shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <span class="font-bold">تغطية كافة أحياء جدة</span>
+            </div>
+            <div class="flex items-center gap-2 p-2 rounded-lg bg-amber-50/80 border border-amber-200 text-amber-900">
+              <span class="font-mono font-semibold text-[11px]">[TODO: رقم السجل / الترخيص]</span>
             </div>
           </div>
         </div>
@@ -136,12 +163,12 @@ function buildHomePage() {
   <section id="services-overview" class="py-20 bg-white border-y border-charcoal/5">
     <div class="container-custom">
       <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
-        <span class="badge-tag">خدماتنا المتخصصة بجدة</span>
+        <span class="badge-tag">خدمات تنظيف بجدة</span>
         <h2 class="text-3xl md:text-4xl font-extrabold text-emerald-800">
           حلول تنظيف متكاملة تغطي كافة متطلباتك
         </h2>
         <p class="text-muted-500 text-base md:text-lg">
-          اختر الخدمة المناسبة لعقارك أو مفروشاتك، مع ضمان استخدام الأجهزة المتطورة والمواد التي تحافظ على سلامة الأسطح والأقمشة.
+          اختر الخدمة المناسبة لعقارك أو أثاثك من بين 14 خدمة تخصصية تغطي المنازل، الفلل، الشقق، المفروشات، والمنشآت التجارية بجدة.
         </p>
       </div>
 
@@ -161,13 +188,13 @@ function buildHomePage() {
               </h3>
 
               <p class="text-sm text-muted-500 leading-relaxed">
-                ${s.desc}. تشمل تنظيف الزوايا الدقيقة، التطهير بأحدث الأجهزة وتجهيز العقار بأعلى معايير الإتقان.
+                ${s.desc}
               </p>
             </div>
 
             <div class="pt-6 mt-6 border-t border-charcoal/5 flex items-center justify-between">
               <a href="/${s.slug}/" class="text-sm font-bold text-teal-700 flex items-center gap-1 group-hover:gap-2 transition-all">
-                <span>تفاصيل الخدمة والتسعير</span>
+                <span>تفاصيل الخدمة وحجز موعد</span>
                 <span aria-hidden="true">&larr;</span>
               </a>
               <a href="/contact/" class="text-xs text-muted-500 hover:text-emerald-800 transition">حجز سريع</a>
@@ -187,7 +214,7 @@ function buildHomePage() {
           كيف نعمل مع عملائنا خطوة بخطوة؟
         </h2>
         <p class="text-muted-500 text-base">
-          وضوح تام من لحظة الاتصال الأولى وحتى تسليم الموقع نظيفاً وجاهزاً للاستخدام.
+          وضوح تام من لحظة الاتصال الأولى وحتى تسليم الموقع نظيفاً وجاهزاً للاستخدام وفق معايير نضار.
         </p>
       </div>
 
@@ -198,7 +225,7 @@ function buildHomePage() {
           <div class="text-3xl font-extrabold text-teal-700/30">01</div>
           <h3 class="text-lg font-bold text-emerald-800">التواصل وتحديد الاحتياج</h3>
           <p class="text-sm text-muted-500 leading-relaxed">
-            تتواصل معنا عبر الهاتف أو الواتساب، ونستمع لتفاصيل العقار (المساحة، الغرف، نوع الخدمة المطلوبة) بدقة.
+            تتواصل معنا عبر الهاتف 0533553620 أو الواتساب، ونستمع لتفاصيل العقار والمساحة وحجم العمل المطلوب بدقة لتقديم التوصية الملائمة.
           </p>
         </div>
 
@@ -207,25 +234,25 @@ function buildHomePage() {
           <div class="text-3xl font-extrabold text-teal-700/30">02</div>
           <h3 class="text-lg font-bold text-emerald-800">تأكيد الموعد وخطة العمل</h3>
           <p class="text-sm text-muted-500 leading-relaxed">
-            نحدد معك الموعد المناسب لجدولك، ونجهز الطاقم والمعدات المتخصصة المناسبة لطبيعة موقعك بجدة.
+            نحدد الموعد الأنسب لجدولك، ونجهز الطاقم والمعدات والمنظفات المتخصصة المناسبة لنوع أسطح ومفروشات موقعك بجدة.
           </p>
         </div>
 
         <!-- Step 3 -->
         <div class="bg-white p-6 rounded-2xl border border-charcoal/5 shadow-soft relative text-right space-y-3">
           <div class="text-3xl font-extrabold text-teal-700/30">03</div>
-          <h3 class="text-lg font-bold text-emerald-800">التنفيذ الميداني الاحترافي</h3>
+          <h3 class="text-lg font-bold text-emerald-800">التنفيذ الميداني المنظم</h3>
           <p class="text-sm text-muted-500 leading-relaxed">
-            يصل الفريق في الوقت المحدد، ويبدأ التنفيذ وفق خطة منظمة تبدأ من الأعلى للأسفل، مع حماية تامة للأثاث.
+            يصل الفريق في الموعد المحدد، ويبدأ التنفيذ وفق خطة منهجية تبدأ من الأسقف والجدران نزولاً للأرضيات، مع حماية تامة لكافة المقتنيات.
           </p>
         </div>
 
         <!-- Step 4 -->
         <div class="bg-white p-6 rounded-2xl border border-charcoal/5 shadow-soft relative text-right space-y-3">
           <div class="text-3xl font-extrabold text-teal-700/30">04</div>
-          <h3 class="text-lg font-bold text-emerald-800">المعاينة النهائية والتسليم</h3>
+          <h3 class="text-lg font-bold text-emerald-800">المعاينة المشتركة والتسليم</h3>
           <p class="text-sm text-muted-500 leading-relaxed">
-            نقوم بجولة تفقدية معك للتأكد من مطابقة النتيجة لكافة تطلعاتك ومعايير الجودة المعتمدة لدى نضار.
+            نجري معك جولة تفقدية نهائية للتأكد من مطابقة النتائج لتوقعاتك ومعايير الجودة الصارمة المعتمدة لدى نضار قبل مغادرة الموقع.
           </p>
         </div>
 
@@ -233,24 +260,24 @@ function buildHomePage() {
     </div>
   </section>
 
-  <!-- Editorial Quality Standards Section -->
+  <!-- Editorial Quality Standards / Why Nadar Section -->
   <section class="py-20 bg-white">
     <div class="container-custom">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
         <div class="lg:col-span-6 relative">
           <div class="rounded-3xl overflow-hidden shadow-card border-4 border-ivory-100">
-            <img src="/assets/images/hero/about.webp" alt="أدوات ومعدات تنظيف احترافية متكاملة لدى شركة نضار" width="700" height="500" loading="lazy" class="w-full h-full object-cover">
+            <img src="/assets/images/hero/about.webp" alt="أدوات ومعدات تنظيف احترافية متكاملة لدى شركة نضار للتنظيف بجدة" width="700" height="500" loading="lazy" class="w-full h-full object-cover">
           </div>
         </div>
 
         <div class="lg:col-span-6 space-y-6 text-right">
-          <span class="badge-tag">معايير نضار الصارمة</span>
+          <span class="badge-tag">لماذا تختار نضار؟</span>
           <h2 class="text-3xl md:text-4xl font-extrabold text-emerald-800 leading-tight">
             ما الذي يميز خدمات النظافة الحقيقية عن التجارب العشوائية؟
           </h2>
           <p class="text-muted-500 text-base leading-relaxed">
-            التنظيف الاحترافي ليس مجرد ماء وصابون؛ بل هو معرفة متخصصة بنوعية المواد الكيميائية المناسبة لكل سطح (الرخام، البورسلين، الأقمشة الحساسة، الزجاج)، واستخدام تقنيات تحافظ على سلامة منزلك دون أضرار جانبية أو روائح نفاذة.
+            التنظيف الاحترافي ليس مجرد ماء وصابون؛ بل هو معرفة متخصصة بنوعية المواد المناسبة لكل سطح (الرخام، البورسلين، الباركيه، والأقمشة الحساسة)، واستخدام تقنيات تحافظ على سلامة منزلك دون أضرار جانبية أو روائح نفاذة.
           </p>
 
           <div class="space-y-4 pt-2">
@@ -259,8 +286,8 @@ function buildHomePage() {
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </div>
               <div>
-                <h3 class="font-bold text-charcoal text-base">احترام خصوصية المنازل والممتلكات</h3>
-                <p class="text-sm text-muted-500 leading-relaxed">طواقم عمل منضبطة تلتزم بأعلى معايير الأمانة واللباقة أثناء العمل داخل المنازل والفلل.</p>
+                <h3 class="font-bold text-charcoal text-base">أمانة وخصوصية البيوت السعودية</h3>
+                <p class="text-sm text-muted-500 leading-relaxed">طواقم عمل منضبطة تراعي حرمة المنازل وخصوصية العائلات، وتتعامل مع المقتنيات والأثاث بأقصى درجات الأمانة والحرص.</p>
               </div>
             </div>
 
@@ -270,7 +297,7 @@ function buildHomePage() {
               </div>
               <div>
                 <h3 class="font-bold text-charcoal text-base">منظفات معتمدة وغير مؤذية للصحة</h3>
-                <p class="text-sm text-muted-500 leading-relaxed">نستخدم منظفات مخصصة خالية من الغازات الخانقة ومناسبة للعائلات والأطفال والحيوانات الأليفة.</p>
+                <p class="text-sm text-muted-500 leading-relaxed">نستخدم منظفات مخصصة مصرحة بيئياً خالية من الغازات الخانقة والروائح المزعجة، آمنة للأطفال وكبار السن وأصحاب الحساسية.</p>
               </div>
             </div>
 
@@ -279,17 +306,18 @@ function buildHomePage() {
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </div>
               <div>
-                <h3 class="font-bold text-charcoal text-base">تسعير واضح ومحدد سلفاً</h3>
-                <p class="text-sm text-muted-500 leading-relaxed">لا مفاجآت في التكلفة؛ يتم توضيح نطاق العمل والعوامل المحددة للسعر بشفافية قبل البدء.</p>
+                <h3 class="font-bold text-charcoal text-base">تسعير عادل وشفاف محدد سلفاً</h3>
+                <p class="text-sm text-muted-500 leading-relaxed">لا مفاجآت ولا تكاليف مبهمة بعد البدء؛ نوضح لك نطاق العمل والعوامل المحددة للتكلفة بشفافية تامة قبل الحجز والتنفيذ.</p>
               </div>
             </div>
           </div>
 
-          <div class="pt-4">
+          <div class="pt-4 flex flex-wrap items-center gap-4">
             <a href="/about/" class="btn-outline">
               <span>تعرف أكثر على هوية وفلسفة نضار</span>
               <span aria-hidden="true">&larr;</span>
             </a>
+            <span class="text-xs text-muted-500">[TODO: عدد سنوات الخبرة الفعلية الموثقة]</span>
           </div>
         </div>
 
@@ -303,24 +331,24 @@ function buildHomePage() {
       <div class="text-center max-w-3xl mx-auto space-y-4 mb-14">
         <span class="badge-tag">نطاق التغطية الجغرافية</span>
         <h2 class="text-3xl md:text-4xl font-extrabold text-emerald-800">
-          نخدم كافة أحياء مدينة جدة وضواحيها
+          تغطية شاملة لكافة أحياء مدينة جدة
         </h2>
         <p class="text-muted-500 text-base">
-          تصل سيارات وفرق نضار المجهزة إلى موقعك في مختلف مناطق جدة وفق المواعيد المتفق عليها.
+          تصل سيارات وفرق نضار المجهزة بكافة المعدات إلى موقعك في مختلف مناطق وأحياء جدة وفق المواعيد المتفق عليها.
         </p>
       </div>
 
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
         ${[
-      { area: 'أبحر الشمالية والجنوبية', note: 'فلل وشاليهات ومنازل' },
-      { area: 'حي الروضة والسلامة', note: 'شقق ومكاتب ومجمعات' },
-      { area: 'حي المحمدية والمرجان', note: 'فلل وقصور ومساكن راقية' },
-      { area: 'حي الشاطئ والحمراء', note: 'شقق سكنية ومقرات شركات' },
-      { area: 'حي النعيم والزهراء', note: 'تنظيف منازل ومفروشات' },
-      { area: 'حي الصفا والمروة', note: 'شقق سكنية وعمائر جديدة' },
-      { area: 'حي السامر والتيسير', note: 'تنظيف بعد التشطيب وسكني' },
-      { area: 'حي البساتين والفيصلية', note: 'خدمات شاملة ومكاتب' },
-    ].map(item => `
+          { area: 'أبحر الشمالية والجنوبية', note: 'فلل وشاليهات ومنازل' },
+          { area: 'حي الروضة والسلامة', note: 'شقق ومكاتب ومجمعات' },
+          { area: 'حي المحمدية والمرجان', note: 'فلل وقصور ومساكن راقية' },
+          { area: 'حي الشاطئ والحمراء', note: 'شقق سكنية ومقرات شركات' },
+          { area: 'حي النعيم والزهراء', note: 'تنظيف منازل ومفروشات' },
+          { area: 'حي الصفا والمروة', note: 'شقق سكنية وعمائر جديدة' },
+          { area: 'حي السامر والتيسير', note: 'تنظيف بعد التشطيب وسكني' },
+          { area: 'حي البساتين والفيصلية', note: 'خدمات شاملة ومكاتب' },
+        ].map(item => `
           <div class="bg-white p-5 rounded-xl border border-charcoal/5 shadow-soft hover:border-teal-700/30 transition text-right">
             <div class="flex items-center gap-2 mb-1.5 text-teal-700">
               <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
@@ -332,7 +360,7 @@ function buildHomePage() {
       </div>
 
       <div class="mt-8 text-center text-xs text-muted-500">
-        هل حيّك غير مدرج بالقائمة؟ لا تقلق، فريق نضار يغطي كافة الأحياء السكنية والتجارية بمدينة جدة.
+        هل حيّك غير مدرج بالقائمة أعلاه؟ لا تقلق، فريق نضار يغطي كافة الأحياء السكنية والتجارية والمخططات الحديثة بمدينة جدة.
       </div>
     </div>
   </section>
@@ -343,69 +371,66 @@ function buildHomePage() {
       <div class="text-center space-y-4 mb-14">
         <span class="badge-tag">إجابات سريعة</span>
         <h2 class="text-3xl md:text-4xl font-extrabold text-emerald-800">
-          أسئلة متكررة يطرحها عملاؤنا بجدة
+          أسئلة شائعة حول خدمات التنظيف بجدة
         </h2>
         <p class="text-muted-500 text-base">
-          إليك أبرز الاستفسارات المتعلقة بالحجز وآلية العمل والأسعار.
+          إليك أبرز الاستفسارات الأكثر تكراراً حول آلية الحجز، المواد المستخدمة، والتعامل مع المفروشات والأرضيات.
         </p>
       </div>
 
       <div class="space-y-4 accordion-group">
-        
-        <div class="card-premium overflow-hidden border border-charcoal/5">
-          <button type="button" aria-expanded="false" class="accordion-header w-full p-5 text-right font-bold text-base md:text-lg text-emerald-800 flex justify-between items-center gap-4 hover:bg-mint/40 transition">
-            <span>كيف يمكنني حجز موعد تنظيف لدى شركة نضار؟</span>
-            <svg class="accordion-icon w-5 h-5 text-teal-700 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="accordion-content">
-            <div class="p-5 pt-0 text-sm md:text-base text-muted-500 leading-relaxed border-t border-charcoal/5">
-              يمكنك الحجز بسهولة عبر الاتصال المباشر برقم الهاتف، أو إرسال رسالة واتساب توضح نوع العقار وحجمه والموعد المفضل. يقوم فريق خدمة العملاء بتأكيد التفاصيل وتزويدك بعرض السعر المناسب فوراً.
+        ${homepageFaqs.map(faq => `
+          <div class="card-premium overflow-hidden border border-charcoal/5">
+            <button type="button" aria-expanded="false" class="accordion-header w-full p-5 text-right font-bold text-base md:text-lg text-emerald-800 flex justify-between items-center gap-4 hover:bg-mint/40 transition">
+              <span>${faq.q}</span>
+              <svg class="accordion-icon w-5 h-5 text-teal-700 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-content">
+              <div class="p-5 pt-0 text-sm md:text-base text-muted-500 leading-relaxed border-t border-charcoal/5">
+                ${faq.a}
+              </div>
             </div>
           </div>
-        </div>
-
-        <div class="card-premium overflow-hidden border border-charcoal/5">
-          <button type="button" aria-expanded="false" class="accordion-header w-full p-5 text-right font-bold text-base md:text-lg text-emerald-800 flex justify-between items-center gap-4 hover:bg-mint/40 transition">
-            <span>هل تتوفر مواد ومعدات التنظيف من قبلكم أم يجب علي تجهيزها؟</span>
-            <svg class="accordion-icon w-5 h-5 text-teal-700 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="accordion-content">
-            <div class="p-5 pt-0 text-sm md:text-base text-muted-500 leading-relaxed border-t border-charcoal/5">
-              نحن نحضر معنا كافة المعدات الاحترافية (مكانس شفط صناعية، أجهزة بخار، ماكينات جلي وتلميع الأرضيات) والمنظفات المتخصصة المصرحة. لا يُطلب من العميل سوى توفير مصدر للماء والكهرباء في الموقع.
-            </div>
-          </div>
-        </div>
-
-        <div class="card-premium overflow-hidden border border-charcoal/5">
-          <button type="button" aria-expanded="false" class="accordion-header w-full p-5 text-right font-bold text-base md:text-lg text-emerald-800 flex justify-between items-center gap-4 hover:bg-mint/40 transition">
-            <span>ما هي العوامل التي تحدد تكلفة خدمة التنظيف؟</span>
-            <svg class="accordion-icon w-5 h-5 text-teal-700 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="accordion-content">
-            <div class="p-5 pt-0 text-sm md:text-base text-muted-500 leading-relaxed border-t border-charcoal/5">
-              تعتمد التكلفة على مساحة العقار الإجمالية، وعدد الغرف ودورات المياه، ونوع التنظيف (تنظيف دوري معتاد، تنظيف عميق، أو تنظيف بعد التشطيب)، ووجود خدمات إضافية مثل غسيل الكنب والمفروشات. يمكنك قراءة التفاصيل الكاملة في <a href="/pricing/" class="text-teal-700 underline font-semibold">صفحة معايير الأسعار</a>.
-            </div>
-          </div>
-        </div>
-
-        <div class="card-premium overflow-hidden border border-charcoal/5">
-          <button type="button" aria-expanded="false" class="accordion-header w-full p-5 text-right font-bold text-base md:text-lg text-emerald-800 flex justify-between items-center gap-4 hover:bg-mint/40 transition">
-            <span>كم تستغرق عملية التنظيف عادة؟</span>
-            <svg class="accordion-icon w-5 h-5 text-teal-700 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div class="accordion-content">
-            <div class="p-5 pt-0 text-sm md:text-base text-muted-500 leading-relaxed border-t border-charcoal/5">
-              تتراوح المدة للشقق المتوسطة بين 3 إلى 5 ساعات، بينما تتطلب الفلل الكبيرة أو أعمال ما بعد التشطيب يوماً كاملاً أو أكثر بحسب حجم الفريق وحجم العمل. نحرص دائماً على الالتزام بالوقت المتفق عليه مسبقاً.
-            </div>
-          </div>
-        </div>
-
+        `).join('')}
       </div>
 
       <div class="text-center pt-8">
         <a href="/faq/" class="text-sm font-bold text-teal-700 hover:text-emerald-800 transition">
           عرض جميع الأسئلة الشائعة وإرشادات الحجز &larr;
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final High-Converting CTA Section -->
+  <section class="py-16 bg-ivory-100 border-t border-charcoal/5">
+    <div class="container-custom">
+      <div class="bg-gradient-to-br from-emerald-800 via-teal-700 to-emerald-900 rounded-3xl p-8 md:p-14 text-white text-center shadow-float relative overflow-hidden">
+        <div class="relative z-10 max-w-3xl mx-auto space-y-6">
+          <span class="inline-block px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur text-mint text-xs font-bold border border-white/20">
+            احجز موعدك بسهولة اليوم
+          </span>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight">
+            جاهز لتجربة نظافة تفوق توقعاتك في بيتك أو منشأتك بجدة؟
+          </h2>
+          <p class="text-white/80 text-sm sm:text-base md:text-lg leading-relaxed">
+            سواء كنت بحاجة إلى تنظيف منازل وفلل وشقق بجدة، أو غسيل كنب وسجاد بجدة بتقنيات البخار المتطورة، فريق «نضار» على أتم الاستعداد لخدمتك في الوقت الذي يناسبك.
+          </p>
+
+          <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+            <a href="tel:${PHONE_INT}" class="px-7 py-4 rounded-xl bg-white text-emerald-800 hover:bg-ivory-100 font-extrabold text-base transition shadow-md flex items-center gap-2">
+              <svg class="w-5 h-5 text-emerald-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              <span>اتصل الآن: ${PHONE_DISPLAY}</span>
+            </a>
+            <a href="${WHATSAPP_URL}?text=${encodeURIComponent('السلام عليكم، أرغب بحجز خدمة تنظيف في جدة')}" target="_blank" rel="noopener noreferrer" class="px-7 py-4 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-extrabold text-base transition shadow-md border border-white/20 flex items-center gap-2">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.073.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1 1.024z"/></svg>
+              <span>راسلنا عبر واتساب</span>
+            </a>
+            <a href="/pricing/" class="px-5 py-4 rounded-xl text-white/90 hover:text-white underline text-sm transition font-medium">
+              اطّلع على معايير الأسعار
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -465,8 +490,8 @@ function buildHomePage() {
   `;
 
   const html = wrapPage({
-    title: 'شركة تنظيف بجدة — نضار | خدمات تنظيف المنازل والفلل',
-    description: 'شركة نضار للتنظيف بجدة: خدمات تنظيف شاملة للمنازل، الفلل، الشقق، الكنب، السجاد، والمكاتب. طواقم مدربة، أجهزة حديثة ومواد آمنة. احجز موعدك الآن.',
+    title: 'شركة تنظيف بجدة — نضار | تنظيف منازل وفلل وشقق ومفروشات',
+    description: 'شركة تنظيف بجدة من نضار: خدمات متكاملة لتنظيف المنازل، الفلل، الشقق، وغسيل الكنب والسجاد بالبخار بأحدث المعدات ومواد آمنة. اتصل الآن 0533553620.',
     canonicalPath: '/',
     schemaJson,
     content,

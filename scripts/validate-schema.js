@@ -117,8 +117,8 @@ for (const p of pages) {
     }
     const faq = graph.find(e => e['@type'] === 'FAQPage');
     if (!faq) errors.push(`${p.file}: Missing FAQPage entity for homepage`);
-    if (faq && faq.mainEntity.length !== 4) {
-      errors.push(`${p.file}: Homepage FAQPage has ${faq.mainEntity.length} questions (expected 4)`);
+    if (faq && faq.mainEntity.length !== 6) {
+      errors.push(`${p.file}: Homepage FAQPage has ${faq.mainEntity.length} questions (expected 6)`);
     }
   }
 

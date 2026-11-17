@@ -59,6 +59,22 @@
   .badge-tag {
     @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-mint text-emerald-800 border border-teal-700/10;
   }
+
+  /* Services Mega Menu */
+  .services-mega-menu {
+    position: absolute;
+    top: 100%;
+    right: -120px;
+    width: 780px;
+    max-width: calc(100vw - 32px);
+    background-color: #ffffff;
+    border-radius: 1.25rem;
+    box-shadow: 0 20px 45px -10px rgba(18, 63, 58, 0.16), 0 0 1px 1px rgba(18, 63, 58, 0.06);
+    border: 1px solid rgba(45, 52, 54, 0.08);
+    padding: 1.25rem 1.25rem 1rem 1.25rem;
+    z-index: 50;
+    margin-top: 0.5rem;
+  }
 }
 
 /* Reduced motion preference */

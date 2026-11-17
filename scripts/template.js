@@ -15,22 +15,148 @@ const WORKING_HOURS_DISPLAY = SITE_CONFIG.workingHoursDisplay;
 const HERO_IMAGE_PATH = SITE_CONFIG.heroImagePath;
 const HERO_IMAGE_ALT = SITE_CONFIG.heroImageAlt;
 
-// Common Service Items for Menus and Internal Links
+// Common Service Categories for Logical Grouping
+const serviceCategories = [
+  {
+    id: 'residential',
+    title: 'تنظيف سكني',
+    desc: 'منازل، فلل، شقق وتنظيف عميق',
+    slugs: ['house-cleaning', 'villa-cleaning', 'apartment-cleaning', 'deep-cleaning']
+  },
+  {
+    id: 'commercial',
+    title: 'تجاري وعمائر',
+    desc: 'مكاتب، عماير ومراكز صحية',
+    slugs: ['office-cleaning', 'building-cleaning', 'hospital-cleaning']
+  },
+  {
+    id: 'furniture',
+    title: 'مفروشات ومجالس',
+    desc: 'كنب، سجاد ومجالس عربية',
+    slugs: ['sofa-cleaning', 'carpet-cleaning', 'majlis-cleaning']
+  },
+  {
+    id: 'specialized',
+    title: 'تنظيف تخصصي',
+    desc: 'بخار، بعد التشطيب، مطابخ وحمامات',
+    slugs: ['steam-cleaning', 'post-construction-cleaning', 'kitchen-cleaning', 'bathroom-cleaning']
+  }
+];
+
+// Common Service Items for Menus, Grids, and Internal Links
 const servicesList = [
-  { slug: 'house-cleaning', name: 'تنظيف منازل', title: 'شركة تنظيف منازل بجدة', icon: 'home', desc: 'تنظيف شامل للغرف والأسطح والأرضيات بعناية فائقة' },
-  { slug: 'villa-cleaning', name: 'تنظيف فلل', title: 'تنظيف فلل بجدة', icon: 'villa', desc: 'عناية متكاملة بالمساحات الكبيرة والواجهات والأدوار' },
-  { slug: 'apartment-cleaning', name: 'تنظيف شقق', title: 'شركة تنظيف شقق بجدة', icon: 'apartment', desc: 'تنظيف دقيق للشقق الجديدة والمفروشة قبل وبعد السكن' },
-  { slug: 'office-cleaning', name: 'تنظيف مكاتب', title: 'تنظيف مكاتب وشركات بجدة', icon: 'office', desc: 'بيئة عمل نقية ومحترفة للمنشآت ومساحات الأعمال' },
-  { slug: 'steam-cleaning', name: 'تنظيف بالبخار', title: 'شركة تنظيف بالبخار بجدة', icon: 'steam', desc: 'تعقيم حراري عالي الكفاءة للأقمشة والأسطح المناسبة' },
-  { slug: 'sofa-cleaning', name: 'تنظيف كنب', title: 'تنظيف كنب ومفروشات بجدة', icon: 'sofa', desc: 'إزالة البقع العميقة وتجديد أقمشة الكنب بأمان تام' },
-  { slug: 'carpet-cleaning', name: 'تنظيف سجاد', title: 'تنظيف سجاد وموكيت بجدة', icon: 'carpet', desc: 'غسيل وتطهير عميق لألياف السجاد والموكيت' },
-  { slug: 'majlis-cleaning', name: 'تنظيف مجالس', title: 'شركة تنظيف مجالس بجدة', icon: 'majlis', desc: 'عناية متخصصة بالمجالس العربية والفرش التراثي والحديث' },
-  { slug: 'kitchen-cleaning', name: 'تنظيف مطابخ', title: 'تنظيف مطابخ بجدة', icon: 'kitchen', desc: 'إزالة الدهون الصعبة وتطهير الخزائن وأسطح الطهي' },
-  { slug: 'bathroom-cleaning', name: 'تنظيف حمامات', title: 'تنظيف حمامات بجدة', icon: 'bathroom', desc: 'إزالة التكلسات والاصفرار وتطهير السيراميك والمرافق' },
-  { slug: 'post-construction-cleaning', name: 'تنظيف بعد التشطيب', title: 'شركة تنظيف بعد التشطيب بجدة', icon: 'construction', desc: 'إزالة غبار البناء وبقايا الدهانات وتجهيز العقار للسكن' },
-  { slug: 'deep-cleaning', name: 'تنظيف عميق', title: 'تنظيف عميق بجدة', icon: 'deep', desc: 'خدمة تفصيلية تصل لأدق الزوايا وخلف الأجهزة والأسطح' },
-  { slug: 'hospital-cleaning', name: 'تنظيف مستشفيات', title: 'شركة تنظيف مستشفيات بجدة', icon: 'hospital', desc: 'تعقيم وتطهير طبي معتمد للمستشفيات والمراكز الصحية والعيادات' },
-  { slug: 'building-cleaning', name: 'تنظيف عماير', title: 'شركة تنظيف عماير بجدة', icon: 'building', desc: 'نظافة شاملة للمباني والعماير السكنية والمداخل والواجهات والسلالم' },
+  {
+    slug: 'house-cleaning',
+    name: 'تنظيف منازل',
+    title: 'شركة تنظيف منازل بجدة',
+    category: 'residential',
+    icon: 'home',
+    desc: 'عناية شاملة بغرف المعيشة والنوم ومسح النوافذ والأرضيات لحماية مسكنك من غبار الساحل ورطوبة جدة.'
+  },
+  {
+    slug: 'villa-cleaning',
+    name: 'تنظيف فلل',
+    title: 'تنظيف فلل بجدة',
+    category: 'residential',
+    icon: 'villa',
+    desc: 'خطة تشغيلية متكاملة للفلل والقصور تشمل السلالم الرخامية، الواجهات الزجاجية الكبيرة، الملاحق والأحواش.'
+  },
+  {
+    slug: 'apartment-cleaning',
+    name: 'تنظيف شقق',
+    title: 'شركة تنظيف شقق بجدة',
+    category: 'residential',
+    icon: 'apartment',
+    desc: 'حلول سريعة ودقيقة للشقق المفروشة والجديدة لتجهيز المسكن قبل الانتقال أو بعد انتهاء عقود الإيجار.'
+  },
+  {
+    slug: 'deep-cleaning',
+    name: 'تنظيف عميق',
+    title: 'تنظيف عميق بجدة',
+    category: 'residential',
+    icon: 'deep',
+    desc: 'تنظيف تفصيلي مكثف يصل للمناطق الصعبة خلف الأجهزة الثقيلة، فرك الوزرات، وتعقيم مجاري التكييف.'
+  },
+  {
+    slug: 'office-cleaning',
+    name: 'تنظيف مكاتب',
+    title: 'تنظيف مكاتب وشركات بجدة',
+    category: 'commercial',
+    icon: 'office',
+    desc: 'جدولة مرنة خارج ساعات الدوام لتنظيف مقرات الشركات وقاعات الاجتماعات وتعقيم محطات العمل والشاشات.'
+  },
+  {
+    slug: 'building-cleaning',
+    name: 'تنظيف عماير',
+    title: 'شركة تنظيف عماير بجدة',
+    category: 'commercial',
+    icon: 'building',
+    desc: 'صيانة ونظافة دورية للعماير السكنية تشمل جلي سلالم الرخام، تنظيف المداخل، المصاعد، ومواقف السيارات.'
+  },
+  {
+    slug: 'hospital-cleaning',
+    name: 'تنظيف مستشفيات',
+    title: 'شركة تنظيف مستشفيات بجدة',
+    category: 'commercial',
+    icon: 'hospital',
+    desc: 'بروتوكولات تطهير طبية معتمدة للمراكز الصحية والعيادات بمواد تعقيم واسعة المدى وطواقم مدربة وقائياً.'
+  },
+  {
+    slug: 'sofa-cleaning',
+    name: 'تنظيف كنب',
+    title: 'تنظيف كنب ومفروشات بجدة',
+    category: 'furniture',
+    icon: 'sofa',
+    desc: 'غسيل احترافي بالحقن والاستخلاص يفكك بقع القهوة والزيوت ويجدد رونق أقمشة المخمل والكتان والجلد.'
+  },
+  {
+    slug: 'carpet-cleaning',
+    name: 'تنظيف سجاد',
+    title: 'تنظيف سجاد وموكيت بجدة',
+    category: 'furniture',
+    icon: 'carpet',
+    desc: 'شفط عميق للأتربة وغسيل متوازن للسجاد والموكيت في موقعه بمحاليل تحافظ على أليافه وتضمن سرعة الجفاف.'
+  },
+  {
+    slug: 'majlis-cleaning',
+    name: 'تنظيف مجالس',
+    title: 'شركة تنظيف مجالس بجدة',
+    category: 'furniture',
+    icon: 'majlis',
+    desc: 'عناية خاصة بالمجالس العربية الأرضية والمساند مع إزالة البقع والروائح وتعطير بالبخور والزيوت الفاخرة.'
+  },
+  {
+    slug: 'steam-cleaning',
+    name: 'تنظيف بالبخار',
+    title: 'شركة تنظيف بالبخار بجدة',
+    category: 'specialized',
+    icon: 'steam',
+    desc: 'تعقيم حراري جاف تحت ضغط عالٍ يقضي على الجراثيم وعث الغبار في المفروشات والستائر دون بلل زائد.'
+  },
+  {
+    slug: 'post-construction-cleaning',
+    name: 'تنظيف بعد التشطيب',
+    title: 'شركة تنظيف بعد التشطيب بجدة',
+    category: 'specialized',
+    icon: 'construction',
+    desc: 'إزالة متقنة لبقايا الدهانات والجبس والإسمنت عن البورسلين والرخام والنوافذ لتسليم عقارك جاهزاً للسكن.'
+  },
+  {
+    slug: 'kitchen-cleaning',
+    name: 'تنظيف مطابخ',
+    title: 'تنظيف مطابخ بجدة',
+    category: 'specialized',
+    icon: 'kitchen',
+    desc: 'إذابة الدهون المستعصية عن مداخن الشفط وأسطح الأفران وجدران السيراميك بمواد آمنة غذائياً وغير خادشة.'
+  },
+  {
+    slug: 'bathroom-cleaning',
+    name: 'تنظيف حمامات',
+    title: 'تنظيف حمامات بجدة',
+    category: 'specialized',
+    icon: 'bathroom',
+    desc: 'تفتيت التكلسات الجيرية وتلميع زجاج كبائن الشاور والخلاطات مع تعقيم طبي شامل للمرافق الصحية.'
+  }
 ];
 
 // 5 Blog Articles Definitions
@@ -121,16 +247,31 @@ function getServiceIconSvg(iconName) {
  * Generate Header Component
  */
 function renderHeader(currentPath) {
-  const serviceDropdownLinks = servicesList.map(s => `
-    <a href="/${s.slug}/" class="flex items-start gap-3 p-2.5 rounded-xl hover:bg-mint/60 transition group">
-      <div class="p-2 rounded-lg bg-mint/80 group-hover:bg-teal-700/10 transition">
-        ${getServiceIconSvg(s.icon)}
-      </div>
+  const serviceMegaMenuCols = serviceCategories.map(cat => `
+    <div class="bg-ivory-100/50 rounded-xl p-3 border border-charcoal/5 flex flex-col justify-between">
       <div>
-        <div class="font-bold text-sm text-charcoal group-hover:text-teal-700 transition">${s.name}</div>
-        <div class="text-xs text-muted-500 leading-tight mt-0.5">${s.title}</div>
+        <div class="border-b border-teal-700/10 pb-2 mb-2">
+          <h4 class="font-extrabold text-xs text-emerald-800 flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-teal-600"></span>
+            <span>${cat.title}</span>
+          </h4>
+          <p class="text-[10px] text-muted-500 mt-0.5 leading-tight">${cat.desc}</p>
+        </div>
+        <div class="space-y-1">
+          ${cat.slugs.map(slug => {
+            const s = servicesList.find(item => item.slug === slug);
+            if (!s) return '';
+            const isActive = currentPath === `/${s.slug}/`;
+            return `
+              <a href="/${s.slug}/" class="flex items-center justify-between px-2 py-1.5 rounded-lg text-xs font-medium text-charcoal hover:bg-white hover:text-teal-700 hover:shadow-xs transition ${isActive ? 'bg-white text-teal-700 font-bold shadow-xs' : ''}">
+                <span class="truncate">${s.name}</span>
+                <span class="text-teal-700/40 text-[10px]">&larr;</span>
+              </a>
+            `;
+          }).join('')}
+        </div>
       </div>
-    </a>
+    </div>
   `).join('');
 
   return `
@@ -180,17 +321,34 @@ function renderHeader(currentPath) {
               <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </button>
 
-            <!-- Dropdown panel -->
-            <div id="services-dropdown-menu" class="absolute right-0 mt-2 w-[620px] bg-white rounded-2xl shadow-float border border-charcoal/10 p-5 opacity-0 invisible -translate-y-2 transition-all duration-200 z-50">
+            <!-- Dropdown panel (Mega Menu) -->
+            <div id="services-dropdown-menu" class="services-mega-menu opacity-0 invisible -translate-y-2 transition-all duration-200" style="width: 780px; max-width: calc(100vw - 32px);">
               <div class="flex justify-between items-center pb-3 mb-3 border-b border-charcoal/5">
-                <div>
-                  <div class="font-bold text-emerald-800 text-sm">خدمات نضار المتكاملة بجدة</div>
-                  <div class="text-xs text-muted-500">حلول متخصصة لكل نوع من العقارات والمفروشات</div>
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-teal-600 animate-pulse"></span>
+                  <div class="font-extrabold text-emerald-800 text-sm">خدمات نضار المتكاملة بجدة</div>
+                  <span class="bg-mint text-teal-800 text-[11px] font-bold px-2 py-0.5 rounded-full border border-teal-700/10">14 خدمة تخصصية</span>
                 </div>
-                <a href="/pricing/" class="text-xs font-bold text-teal-700 hover:underline">معايير الأسعار &larr;</a>
+                <a href="/pricing/" class="text-xs font-bold text-teal-700 hover:text-emerald-800 hover:underline flex items-center gap-1 transition">
+                  <span>معايير الأسعار</span>
+                  <span aria-hidden="true">&larr;</span>
+                </a>
               </div>
-              <div class="grid grid-cols-2 gap-2 max-h-[380px] overflow-y-auto pr-1">
-                ${serviceDropdownLinks}
+              <div class="grid grid-cols-4 gap-3">
+                ${serviceMegaMenuCols}
+              </div>
+              <div class="mt-3.5 pt-2.5 border-t border-charcoal/5 flex items-center justify-between text-xs bg-ivory-100/60 -mx-5 -mb-4 px-5 py-2.5 rounded-b-2xl">
+                <div class="text-muted-500 text-[11px]">
+                  <strong class="text-emerald-800">محتار في الخدمة المناسبة؟</strong> تواصل معنا وسنحدد لك الخطة الأنسب فوراً
+                </div>
+                <div class="flex items-center gap-3 text-[11px] font-bold">
+                  <a href="tel:${PHONE_INT}" class="text-emerald-800 hover:text-teal-700 transition" dir="ltr">${PHONE_DISPLAY}</a>
+                  <span class="text-charcoal/20">|</span>
+                  <a href="${WHATSAPP_URL}" target="_blank" rel="noopener noreferrer" class="text-teal-700 hover:text-emerald-800 hover:underline flex items-center gap-1">
+                    <span>محادثة واتساب سريعة</span>
+                    <span aria-hidden="true">&larr;</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -235,17 +393,36 @@ function renderHeader(currentPath) {
       <a href="/" class="block px-3 py-2.5 rounded-xl font-medium text-charcoal hover:bg-mint ${currentPath === '/' ? 'bg-mint text-teal-700 font-bold' : ''}">الرئيسية</a>
       <a href="/about/" class="block px-3 py-2.5 rounded-xl font-medium text-charcoal hover:bg-mint ${currentPath === '/about/' ? 'bg-mint text-teal-700 font-bold' : ''}">من نحن</a>
       
-      <!-- Mobile Services Accordion -->
+      <!-- Mobile Services Accordion (Categorized) -->
       <div>
         <button type="button" data-target="mobile-services-list" aria-expanded="false" class="mobile-submenu-toggle w-full flex items-center justify-between px-3 py-2.5 rounded-xl font-medium text-charcoal hover:bg-mint text-right">
-          <span>خدماتنا (14 خدمة)</span>
+          <span class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-teal-600"></span>
+            <span>خدماتنا (14 خدمة مجمعة)</span>
+          </span>
           <svg class="chevron-icon w-4 h-4 transition-transform text-muted-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
-        <div id="mobile-services-list" class="hidden pr-3 pl-1 py-1 space-y-1 border-r-2 border-teal-700/20 mr-3 mt-1">
-          ${servicesList.map(s => `
-            <a href="/${s.slug}/" class="block py-1.5 px-2 text-sm text-charcoal hover:text-teal-700 ${currentPath === `/${s.slug}/` ? 'text-teal-700 font-bold' : ''}">
-              • ${s.name}
-            </a>
+        <div id="mobile-services-list" class="hidden pr-3 pl-1 py-2 space-y-2 border-r-2 border-teal-700/20 mr-3 mt-1">
+          ${serviceCategories.map(cat => `
+            <div class="bg-ivory-100/60 rounded-xl p-2.5 border border-charcoal/5 space-y-1">
+              <div class="text-xs font-extrabold text-emerald-800 flex items-center gap-1.5 pb-1 border-b border-charcoal/5">
+                <span class="w-1.5 h-1.5 rounded-full bg-teal-600"></span>
+                <span>${cat.title}</span>
+              </div>
+              <div class="space-y-0.5 pt-1">
+                ${cat.slugs.map(slug => {
+                  const s = servicesList.find(item => item.slug === slug);
+                  if (!s) return '';
+                  const isActive = currentPath === `/${s.slug}/`;
+                  return `
+                    <a href="/${s.slug}/" class="flex items-center justify-between py-1.5 px-2 rounded-lg text-xs text-charcoal hover:bg-white hover:text-teal-700 transition ${isActive ? 'text-teal-700 font-bold bg-white shadow-xs' : ''}">
+                      <span>${s.name}</span>
+                      <span class="text-teal-700/40 text-[10px]">&larr;</span>
+                    </a>
+                  `;
+                }).join('')}
+              </div>
+            </div>
           `).join('')}
         </div>
       </div>
