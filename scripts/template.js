@@ -26,20 +26,20 @@ const serviceCategories = [
   {
     id: 'commercial',
     title: 'تجاري وعمائر',
-    desc: 'مكاتب، عماير ومراكز صحية',
-    slugs: ['office-cleaning', 'building-cleaning', 'hospital-cleaning']
+    desc: 'مكاتب، عماير، مستشفيات وواجهات',
+    slugs: ['office-cleaning', 'building-cleaning', 'hospital-cleaning', 'glass-facade-cleaning']
   },
   {
     id: 'furniture',
     title: 'مفروشات ومجالس',
-    desc: 'كنب، سجاد ومجالس عربية',
-    slugs: ['sofa-cleaning', 'carpet-cleaning', 'majlis-cleaning']
+    desc: 'كنب، سجاد، مجالس وستائر',
+    slugs: ['sofa-cleaning', 'carpet-cleaning', 'majlis-cleaning', 'curtain-cleaning']
   },
   {
     id: 'specialized',
     title: 'تنظيف تخصصي',
-    desc: 'بخار، بعد التشطيب، مطابخ وحمامات',
-    slugs: ['steam-cleaning', 'post-construction-cleaning', 'kitchen-cleaning', 'bathroom-cleaning']
+    desc: 'مكيفات، جلي رخام، بخار وتشطيب',
+    slugs: ['ac-cleaning', 'marble-polishing', 'steam-cleaning', 'post-construction-cleaning', 'kitchen-cleaning', 'bathroom-cleaning']
   }
 ];
 
@@ -102,6 +102,14 @@ const servicesList = [
     desc: 'بروتوكولات تطهير طبية معتمدة للمراكز الصحية والعيادات بمواد تعقيم واسعة المدى وطواقم مدربة وقائياً.'
   },
   {
+    slug: 'glass-facade-cleaning',
+    name: 'واجهات زجاجية',
+    title: 'تنظيف واجهات زجاجية بجدة',
+    category: 'commercial',
+    icon: 'glass',
+    desc: 'غسيل واجهات الزجاج والكلادينج للمباني والشركات والفلل بأحدث معدات السلامة ومضخات الماء المنقى.'
+  },
+  {
     slug: 'sofa-cleaning',
     name: 'تنظيف كنب',
     title: 'تنظيف كنب ومفروشات بجدة',
@@ -124,6 +132,30 @@ const servicesList = [
     category: 'furniture',
     icon: 'majlis',
     desc: 'عناية خاصة بالمجالس العربية الأرضية والمساند مع إزالة البقع والروائح وتعطير بالبخور والزيوت الفاخرة.'
+  },
+  {
+    slug: 'curtain-cleaning',
+    name: 'غسيل ستائر',
+    title: 'غسيل ستائر بجدة',
+    category: 'furniture',
+    icon: 'curtain',
+    desc: 'تنظيف وتعقيم أقمشة الستائر بالبخار الجاف في مكانها دون فك، أو الفك والكي والتركيب الاحترافي.'
+  },
+  {
+    slug: 'ac-cleaning',
+    name: 'تنظيف مكيفات',
+    title: 'تنظيف مكيفات بجدة',
+    category: 'specialized',
+    icon: 'ac',
+    desc: 'غسيل احترافي بالجراب المائي وضغط المياه لوحدات الاسبليت والمخفية والشباك لإزالة الطين والروائح.'
+  },
+  {
+    slug: 'marble-polishing',
+    name: 'جلي رخام',
+    title: 'جلي رخام بجدة',
+    category: 'specialized',
+    icon: 'marble',
+    desc: 'جلي وتسوية فواصل الرخام والجرانيت بأقراص الألماس والتلميع بالكريستال الإيطالي لبريق دائم.'
   },
   {
     slug: 'steam-cleaning',
@@ -226,6 +258,18 @@ function getServiceIconSvg(iconName) {
       return `<svg class="w-5 h-5 text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>`;
     case 'majlis':
       return `<svg class="w-5 h-5 text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>`;
+    case 'ac':
+      return `<svg class="w-5 h-5 text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>`;
+    case 'marble':
+      return `<svg class="w-5 h-5 text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`;
+    case 'glass':
+      return `<svg class="w-5 h-5 text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>`;
+    case 'curtain':
+      return `<svg class="w-5 h-5 text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16M6 4v16M18 4v16M6 12c2 0 4 2 4 4M18 12c-2 0-4 2-4 4"/></svg>`;
+    case 'tank':
+      return `<svg class="w-5 h-5 text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>`;
+    case 'pest':
+      return `<svg class="w-5 h-5 text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>`;
     case 'kitchen':
       return `<svg class="w-5 h-5 text-teal-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>`;
     case 'bathroom':
@@ -322,19 +366,19 @@ function renderHeader(currentPath) {
             </button>
 
             <!-- Dropdown panel (Mega Menu) -->
-            <div id="services-dropdown-menu" class="services-mega-menu opacity-0 invisible -translate-y-2 transition-all duration-200" style="width: 780px; max-width: calc(100vw - 32px);">
+            <div id="services-dropdown-menu" class="services-mega-menu opacity-0 invisible -translate-y-2 transition-all duration-200" style="width: 820px; min-width: 760px; max-width: calc(100vw - 32px);">
               <div class="flex justify-between items-center pb-3 mb-3 border-b border-charcoal/5">
                 <div class="flex items-center gap-2">
                   <span class="w-2.5 h-2.5 rounded-full bg-teal-600 animate-pulse"></span>
                   <div class="font-extrabold text-emerald-800 text-sm">خدمات نضار المتكاملة بجدة</div>
-                  <span class="bg-mint text-teal-800 text-[11px] font-bold px-2 py-0.5 rounded-full border border-teal-700/10">14 خدمة تخصصية</span>
+                  <span class="bg-mint text-teal-800 text-[11px] font-bold px-2 py-0.5 rounded-full border border-teal-700/10">18 خدمة متخصصة</span>
                 </div>
                 <a href="/pricing/" class="text-xs font-bold text-teal-700 hover:text-emerald-800 hover:underline flex items-center gap-1 transition">
                   <span>معايير الأسعار</span>
                   <span aria-hidden="true">&larr;</span>
                 </a>
               </div>
-              <div class="grid grid-cols-4 gap-3">
+              <div class="grid grid-cols-4 gap-3" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem;">
                 ${serviceMegaMenuCols}
               </div>
               <div class="mt-3.5 pt-2.5 border-t border-charcoal/5 flex items-center justify-between text-xs bg-ivory-100/60 -mx-5 -mb-4 px-5 py-2.5 rounded-b-2xl">
@@ -398,7 +442,7 @@ function renderHeader(currentPath) {
         <button type="button" data-target="mobile-services-list" aria-expanded="false" class="mobile-submenu-toggle w-full flex items-center justify-between px-3 py-2.5 rounded-xl font-medium text-charcoal hover:bg-mint text-right">
           <span class="flex items-center gap-2">
             <span class="w-2 h-2 rounded-full bg-teal-600"></span>
-            <span>خدماتنا (14 خدمة مجمعة)</span>
+            <span>خدماتنا (18 خدمة متخصصة)</span>
           </span>
           <svg class="chevron-icon w-4 h-4 transition-transform text-muted-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
@@ -519,14 +563,18 @@ function renderFooter(customWhatsAppUrl) {
             <li><a href="/building-cleaning/" class="hover:text-teal-400 transition">تنظيف عماير بجدة</a></li>
             <li><a href="/office-cleaning/" class="hover:text-teal-400 transition">تنظيف مكاتب بجدة</a></li>
             <li><a href="/hospital-cleaning/" class="hover:text-teal-400 transition">تنظيف مستشفيات بجدة</a></li>
+            <li><a href="/glass-facade-cleaning/" class="hover:text-teal-400 transition">تنظيف واجهات زجاجية</a></li>
+            <li><a href="/marble-polishing/" class="hover:text-teal-400 transition">جلي وتلميع رخام بجدة</a></li>
             <li><a href="/post-construction-cleaning/" class="hover:text-teal-400 transition">تنظيف بعد التشطيب</a></li>
           </ul>
         </div>
 
         <!-- Column 4: Services (Part 2) -->
         <div class="space-y-3">
-          <h3 class="text-base font-bold text-white border-r-2 border-teal-500 pr-2">المفروشات والتعقيم</h3>
+          <h3 class="text-base font-bold text-white border-r-2 border-teal-500 pr-2">المفروشات والتكييف</h3>
           <ul class="space-y-2 text-sm text-ivory-200/80">
+            <li><a href="/ac-cleaning/" class="hover:text-teal-400 transition">تنظيف مكيفات بجدة</a></li>
+            <li><a href="/curtain-cleaning/" class="hover:text-teal-400 transition">غسيل ستائر بجدة</a></li>
             <li><a href="/steam-cleaning/" class="hover:text-teal-400 transition">تنظيف بالبخار</a></li>
             <li><a href="/deep-cleaning/" class="hover:text-teal-400 transition">تنظيف عميق تفصيلي</a></li>
             <li><a href="/sofa-cleaning/" class="hover:text-teal-400 transition">تنظيف كنب بجدة</a></li>
@@ -601,7 +649,7 @@ function renderFooter(customWhatsAppUrl) {
 /**
  * Base Page Layout Wrapper
  */
-function wrapPage({ title, description, canonicalPath, schemaJson, content, heroPreload, customWhatsAppUrl, ogImage, is404 = false }) {
+function wrapPage({ title, description, canonicalPath, schemaJson, content, heroPreload, customWhatsAppUrl, ogImage, is404 = false, noIndex = false }) {
   const fullCanonical = `${SITE_URL}${canonicalPath}`;
   const metaHeroImage = ogImage ? (ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogImage}`) : `${SITE_URL}${HERO_IMAGE_PATH}`;
   const ogType = canonicalPath.startsWith('/blog/') && canonicalPath !== '/blog/' ? 'article' : 'website';
@@ -612,7 +660,7 @@ function wrapPage({ title, description, canonicalPath, schemaJson, content, hero
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title}</title>
   <meta name="description" content="${description}">
-  ${is404 ? '<meta name="robots" content="noindex, follow">' : `<link rel="canonical" href="${fullCanonical}">`}
+  ${noIndex ? '<meta name="robots" content="noindex, nofollow">\n  <link rel="canonical" href="' + fullCanonical + '">' : is404 ? '<meta name="robots" content="noindex, follow">' : `<link rel="canonical" href="${fullCanonical}">`}
 
   <!-- Open Graph / Social Media -->
   <meta property="og:type" content="${ogType}">

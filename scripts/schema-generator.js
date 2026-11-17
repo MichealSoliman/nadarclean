@@ -9,7 +9,7 @@
  * - Exact match between JSON-LD and page content.
  */
 
-const { SITE_URL, FULL_BRAND, PHONE_INT, EMAIL } = require('./template');
+const { SITE_URL, FULL_BRAND, PHONE_INT, EMAIL, servicesList } = require('./template');
 
 const BUSINESS_ID = `${SITE_URL}/#business`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
@@ -66,6 +66,19 @@ function getLocalBusinessEntity() {
         "name": area
       }))
     ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "خدمات التنظيف المتخصصة بجدة",
+      "itemListElement": servicesList.map(s => ({
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": s.title,
+          "url": `${SITE_URL}/${s.slug}/`,
+          "description": s.desc
+        }
+      }))
+    },
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",

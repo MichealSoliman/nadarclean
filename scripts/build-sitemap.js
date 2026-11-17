@@ -18,7 +18,7 @@ const contentPages = [
   { path: 'privacy-policy/index.html', loc: `${SITE_URL}/privacy-policy/`, priority: '0.3', changefreq: 'yearly' },
   { path: 'terms-and-conditions/index.html', loc: `${SITE_URL}/terms-and-conditions/`, priority: '0.3', changefreq: 'yearly' },
 
-  // 14 Service pages
+  // 18 Published Service pages
   { path: 'house-cleaning/index.html', loc: `${SITE_URL}/house-cleaning/`, priority: '0.9', changefreq: 'weekly' },
   { path: 'villa-cleaning/index.html', loc: `${SITE_URL}/villa-cleaning/`, priority: '0.9', changefreq: 'weekly' },
   { path: 'apartment-cleaning/index.html', loc: `${SITE_URL}/apartment-cleaning/`, priority: '0.9', changefreq: 'weekly' },
@@ -33,6 +33,10 @@ const contentPages = [
   { path: 'deep-cleaning/index.html', loc: `${SITE_URL}/deep-cleaning/`, priority: '0.9', changefreq: 'weekly' },
   { path: 'hospital-cleaning/index.html', loc: `${SITE_URL}/hospital-cleaning/`, priority: '0.9', changefreq: 'weekly' },
   { path: 'building-cleaning/index.html', loc: `${SITE_URL}/building-cleaning/`, priority: '0.9', changefreq: 'weekly' },
+  { path: 'ac-cleaning/index.html', loc: `${SITE_URL}/ac-cleaning/`, priority: '0.9', changefreq: 'weekly' },
+  { path: 'marble-polishing/index.html', loc: `${SITE_URL}/marble-polishing/`, priority: '0.9', changefreq: 'weekly' },
+  { path: 'glass-facade-cleaning/index.html', loc: `${SITE_URL}/glass-facade-cleaning/`, priority: '0.9', changefreq: 'weekly' },
+  { path: 'curtain-cleaning/index.html', loc: `${SITE_URL}/curtain-cleaning/`, priority: '0.9', changefreq: 'weekly' },
 
   // Blog pages (Index + 5 Articles)
   { path: 'blog/index.html', loc: `${SITE_URL}/blog/`, priority: '0.8', changefreq: 'weekly' },

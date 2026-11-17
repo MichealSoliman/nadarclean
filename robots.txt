@@ -10,6 +10,7 @@ Allow: /assets/images/
 # Disallow private and administrative paths
 Disallow: /admin/
 Disallow: /api/
+Disallow: /drafts/
 Disallow: /thank-you/
 Disallow: /*thank-you*
 Disallow: /404.html
