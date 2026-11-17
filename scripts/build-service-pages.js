@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { wrapPage, servicesList, SITE_CONFIG, SITE_URL, FULL_BRAND, PHONE_DISPLAY, PHONE_INT, WHATSAPP_URL, getServiceIconSvg } = require('./template');
+const { buildPageGraph, getServiceEntity, getBreadcrumbsEntity, getFAQEntity } = require('./schema-generator');
 
 function ensureDir(filePath) {
   const dir = path.dirname(filePath);
@@ -515,43 +516,26 @@ function buildSingleServicePage(data) {
   const waCustomText = `السلام عليكم، أريد عرض سعر لخدمة ${serviceLabel} في جدة`;
   const serviceWhatsAppUrl = SITE_CONFIG.getWhatsAppUrl(waCustomText);
 
-  const schemaJson = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": data.h1,
-    "serviceType": data.targetKeyword,
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": FULL_BRAND,
-      "url": SITE_URL,
-      "telephone": PHONE_INT
-    },
-    "areaServed": {
-      "@type": "City",
-      "name": "Jeddah"
-    },
-    "description": data.metaDesc,
-    "url": `${SITE_URL}/${data.slug}/`
-  };
+  const serviceEntity = getServiceEntity({
+    slug: data.slug,
+    title: data.h1,
+    targetKeyword: data.targetKeyword,
+    description: data.metaDesc
+  });
 
-  const breadcrumbsSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "الرئيسية",
-        "item": SITE_URL
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": data.targetKeyword,
-        "item": `${SITE_URL}/${data.slug}/`
-      }
-    ]
-  };
+  const breadcrumbsEntity = getBreadcrumbsEntity([
+    { name: 'الرئيسية', path: '/' },
+    { name: 'الخدمات', path: '/#services-overview' },
+    { name: data.targetKeyword, path: `/${data.slug}/` }
+  ]);
+
+  const faqEntity = getFAQEntity(data.faqs);
+
+  const schemaJson = buildPageGraph([
+    serviceEntity,
+    breadcrumbsEntity,
+    faqEntity
+  ]);
 
   const content = `
   <!-- Breadcrumbs -->
@@ -793,7 +777,7 @@ function buildSingleServicePage(data) {
     title: data.titleTag,
     description: data.metaDesc,
     canonicalPath: `/${data.slug}/`,
-    schemaJson: [schemaJson, breadcrumbsSchema],
+    schemaJson,
     content,
     heroPreload: data.heroImg,
     ogImage: data.heroImg,

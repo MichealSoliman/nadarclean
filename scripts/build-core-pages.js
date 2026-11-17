@@ -1,6 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 const { wrapPage, servicesList, blogList, SITE_URL, FULL_BRAND, PHONE_DISPLAY, PHONE_INT, WHATSAPP_URL, EMAIL, LOCATION, ADDRESS_NOTE, WORKING_HOURS_DISPLAY, HERO_IMAGE_PATH, HERO_IMAGE_ALT, getServiceIconSvg } = require('./template');
+const {
+  BUSINESS_ID,
+  buildPageGraph,
+  getWebSiteEntity,
+  getBreadcrumbsEntity,
+  getFAQEntity
+} = require('./schema-generator');
 
 function ensureDir(filePath) {
   const dir = path.dirname(filePath);
@@ -20,42 +27,29 @@ function writeHtml(relPath, html) {
  * 1. Homepage (/)
  */
 function buildHomePage() {
-  const schemaJson = {
-    "@context": "https://schema.org",
-    "@type": "HomeAndConstructionBusiness",
-    "name": FULL_BRAND,
-    "alternateName": "نضار للتنظيف",
-    "url": SITE_URL,
-    "logo": `${SITE_URL}/assets/images/brand/logo.webp`,
-    "image": `${SITE_URL}${HERO_IMAGE_PATH}`,
-    "description": "شركة نضار للتنظيف بجدة تقدم خدمات متكاملة لتنظيف المنازل والفلل والمفروشات والمكاتب، بأعلى معايير النظافة والاحترافية والاهتمام بالتفاصيل.",
-    "telephone": PHONE_INT,
-    "email": EMAIL,
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Jeddah",
-      "addressCountry": "SA",
-      "streetAddress": ADDRESS_NOTE
+  const homepageFaqs = [
+    {
+      q: 'كيف يمكنني حجز موعد تنظيف لدى شركة نضار؟',
+      a: 'يمكنك الحجز بسهولة عبر الاتصال المباشر برقم الهاتف، أو إرسال رسالة واتساب توضح نوع العقار وحجمه والموعد المفضل. يقوم فريق خدمة العملاء بتأكيد التفاصيل وتزويدك بعرض السعر المناسب فوراً.'
     },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "21.5433",
-      "longitude": "39.1728"
+    {
+      q: 'هل أحتاج لتوفير أي مواد أو أدوات تنظيف من جانبي؟',
+      a: 'نحن نحضر معنا كافة المعدات الاحترافية (مكانس شفط صناعية، أجهزة بخار، ماكينات جلي وتلميع الأرضيات) والمنظفات المتخصصة المصرحة. لا يُطلب من العميل سوى توفير مصدر للماء والكهرباء في الموقع.'
     },
-    "areaServed": {
-      "@type": "City",
-      "name": "Jeddah"
+    {
+      q: 'ما هي العوامل التي تحدد تكلفة خدمة التنظيف؟',
+      a: 'تعتمد التكلفة على مساحة العقار الإجمالية، وعدد الغرف ودورات المياه، ونوع التنظيف (تنظيف دوري معتاد، تنظيف عميق، أو تنظيف بعد التشطيب)، ووجود خدمات إضافية مثل غسيل الكنب والمفروشات. يمكنك قراءة التفاصيل الكاملة في صفحة معايير الأسعار.'
     },
-    "priceRange": "$$",
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
-        "opens": "08:00",
-        "closes": "22:00"
-      }
-    ]
-  };
+    {
+      q: 'كم تستغرق عملية التنظيف عادة؟',
+      a: 'تتراوح المدة للشقق المتوسطة بين 3 إلى 5 ساعات، بينما تتطلب الفلل الكبيرة أو أعمال ما بعد التشطيب يوماً كاملاً أو أكثر بحسب حجم الفريق وحجم العمل. نحرص دائماً على الالتزام بالوقت المتفق عليه مسبقاً.'
+    }
+  ];
+
+  const schemaJson = buildPageGraph([
+    getWebSiteEntity(),
+    getFAQEntity(homepageFaqs)
+  ]);
 
   const content = `
   <!-- Hero Section -->
@@ -486,13 +480,22 @@ function buildHomePage() {
  * 2. About Page (/about/)
  */
 function buildAboutPage() {
-  const schemaJson = {
-    "@context": "https://schema.org",
-    "@type": "AboutPage",
-    "name": "من نحن — شركة نضار للتنظيف بجدة",
-    "description": "تعرف على هوية نضار للتنظيف بجدة، فلسفة تقديم الخدمة، معايير الجودة المتبعة، ومنهجية العناية بممتلكات العملاء.",
-    "url": `${SITE_URL}/about/`
-  };
+  const schemaJson = buildPageGraph([
+    {
+      "@type": "AboutPage",
+      "@id": `${SITE_URL}/about/#webpage`,
+      "url": `${SITE_URL}/about/`,
+      "name": "من نحن — شركة نضار للتنظيف بجدة | رؤيتنا ومعايير الجودة",
+      "description": "تعرف على شركة نضار للتنظيف بجدة، معايير الجودة العالية، بروتوكولات الأمانة والعناية الفائقة بمنازلكم وممتلكاتكم. اكتشف خدماتنا وتواصل معنا اليوم.",
+      "mainEntity": {
+        "@id": BUSINESS_ID
+      }
+    },
+    getBreadcrumbsEntity([
+      { name: 'الرئيسية', path: '/' },
+      { name: 'من نحن', path: '/about/' }
+    ])
+  ]);
 
   const content = `
   <!-- Breadcrumbs -->
@@ -651,13 +654,22 @@ function buildAboutPage() {
  * 3. Contact Page (/contact/)
  */
 function buildContactPage() {
-  const schemaJson = {
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    "name": "اتصل بنا — شركة نضار للتنظيف بجدة",
-    "description": "تواصل مع فريق نضار للتنظيف بجدة لطلب عروض الأسعار وحجز المواعيد لكافة خدمات تنظيف المنازل والمفروشات.",
-    "url": `${SITE_URL}/contact/`
-  };
+  const schemaJson = buildPageGraph([
+    {
+      "@type": "ContactPage",
+      "@id": `${SITE_URL}/contact/#webpage`,
+      "url": `${SITE_URL}/contact/`,
+      "name": "اتصل بنا — شركة نضار للتنظيف بجدة | حجز واستفسار مباشر",
+      "description": `تواصل مع شركة نضار للتنظيف بجدة عبر الهاتف ${PHONE_DISPLAY} أو الواتساب، واستفد من خدمات تنظيف المنازل والفلل والمفروشات بأعلى جودة. احجز موعدك الآن.`,
+      "mainEntity": {
+        "@id": BUSINESS_ID
+      }
+    },
+    getBreadcrumbsEntity([
+      { name: 'الرئيسية', path: '/' },
+      { name: 'اتصل بنا', path: '/contact/' }
+    ])
+  ]);
 
   const content = `
   <!-- Breadcrumbs -->
@@ -846,13 +858,19 @@ function buildContactPage() {
  * 4. Pricing Page (/pricing/)
  */
 function buildPricingPage() {
-  const schemaJson = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "معايير الأسعار — نضار للتنظيف بجدة",
-    "description": "تعرف على العوامل الموضوعية التي تحدد تكلفة خدمات تنظيف الشقق، الفلل، المفروشات وما بعد التشطيب في جدة.",
-    "url": `${SITE_URL}/pricing/`
-  };
+  const schemaJson = buildPageGraph([
+    {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/pricing/#webpage`,
+      "url": `${SITE_URL}/pricing/`,
+      "name": "أسعار شركات التنظيف بجدة — معايير نضار لتكلفة تنظيف المنازل",
+      "description": "دليل أسعار تنظيف المنازل والفلل والشقق بجدة لدى نضار. معايير تسعير شفافة وعادلة لكافة الخدمات دون أي تكاليف خفية. اطلب عرض سعرك المباشر الآن."
+    },
+    getBreadcrumbsEntity([
+      { name: 'الرئيسية', path: '/' },
+      { name: 'الأسعار', path: '/pricing/' }
+    ])
+  ]);
 
   const content = `
   <!-- Breadcrumbs -->
@@ -1011,36 +1029,44 @@ function buildPricingPage() {
  * 5. FAQ Page (/faq/)
  */
 function buildFaqPage() {
-  const schemaJson = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "كيف يمكنني حجز موعد تنظيف لدى شركة نضار بجدة؟",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `يمكنك الحجز بسهولة عبر الاتصال بالهاتف ${PHONE_DISPLAY} أو المراسلة عبر الواتساب لتحديد نوع الخدمة واليوم والوقت المناسب لك.`
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "ما هي الأحياء التي تغطيها شركة نضار في جدة؟",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "نغطي كافة أحياء مدينة جدة السكنية والتجارية، بما في ذلك أبحر الشمالية والجنوبية، الروضة، السلامة، المحمدية، المرجان، الشاطئ، الحمراء، السامر، الصفا، والنعيم."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "هل المنظفات المستخدمة آمنة على الأطفال والحيوانات الأليفة؟",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "نعم، نحرص على استخدام مواد تنظيف مصرحة ومطابقة للمواصفات القياسية، وخالية من الغازات الخانقة أو المواد المحظورة."
-        }
-      }
-    ]
-  };
+  const faqList = [
+    {
+      q: 'قبل كم يوم ينبغي علي حجز موعد الخدمة؟',
+      a: 'يفضل الحجز قبل 24 إلى 48 ساعة لضمان توفير الموعد والوقت المفضل لك، خاصة خلال عطلات نهاية الأسبوع ومواسم الأعياد. وفي حال توفر شاغر بالجدول اليومي، يمكننا تقديم الخدمة في نفس اليوم.'
+    },
+    {
+      q: 'هل يمكن تعديل موعد الحجز أو إلغاؤه؟',
+      a: 'نعم بكل تأكيد، نرجو فقط إخطارنا قبل الموعد المتفق عليه بـ 12 ساعة على الأقل حتى نتمكن من إعادة ترتيب جدول الفريق دون أي رسوم إضافية.'
+    },
+    {
+      q: 'هل يلزم تواجدي في المنزل طوال فترة التنظيف؟',
+      a: 'يلزم وجود العميل أو من ينوب عنه عند بدء العمل لشرح المتطلبات واستلام الموقع، وكذلك عند الانتهاء لتفقد جودة العمل واستلام الموقع رسمياً. أما أثناء سير العمل فيمكنك التواجد أو ممارسة مهامك بشكل طبيعي.'
+    },
+    {
+      q: 'ما الذي ينبغي علي تجهيزه قبل وصول فريق التنظيف؟',
+      a: 'يُفضل حفظ المقتنيات الثمينة والأوراق الرسمية في أماكن مغلقة، وتوفير مصدر فعال للماء والكهرباء في الموقع، وإزاحة أي مقتنيات شخصية مبعثرة على الأسطح لتسهيل بدء العمل المباشر.'
+    },
+    {
+      q: 'كم يستغرق جفاف الكنب والسجاد بعد الغسيل؟',
+      a: 'بفضل ماكينات الشفط القوية التي تستخلص ما يقارب 85-90% من المياه، يستغرق الجفاف التام بين 3 إلى 6 ساعات في المتوسط، بالاعتماد على تهوية الغرفة وتشغيل التكييف أو المراوح.'
+    },
+    {
+      q: 'ما هي طرق الدفع المتاحة لديكم؟',
+      a: 'نوفر خيارات دفع متعددة تشمل التحويل البنكي المباشر، والدفع النقدي عند التسليم، بالإضافة لمدى والبطاقات الائتمانية بحسب الاتفاق المسبق.'
+    },
+    {
+      q: 'ماذا لو كان لدي ملاحظة على زاوية معينة بعد انتهاء العمل؟',
+      a: 'لا يغادر طاقم نضار الموقع إلا بعد قيامك بالمعاينة والتأكد من إتمام كل المتطلبات. وإذا وجدت أي ملاحظة أثناء المعاينة، يقوم الفريق بمعالجتها فوراً ودون أي تردد حتى تصل إلى الرضا الكامل.'
+    }
+  ];
+
+  const schemaJson = buildPageGraph([
+    getFAQEntity(faqList),
+    getBreadcrumbsEntity([
+      { name: 'الرئيسية', path: '/' },
+      { name: 'الأسئلة الشائعة', path: '/faq/' }
+    ])
+  ]);
 
   const content = `
   <!-- Breadcrumbs -->
@@ -1213,13 +1239,19 @@ function buildFaqPage() {
  * 6. Gallery Page (/gallery/)
  */
 function buildGalleryPage() {
-  const schemaJson = {
-    "@context": "https://schema.org",
-    "@type": "ImageGallery",
-    "name": "معرض الصور — نضار للتنظيف بجدة",
-    "description": "استعرض صوراً تمثل مجالات خدمات التنظيف المختلفة لدى نضار للتنظيف بجدة للمنازل والمفروشات والمكاتب.",
-    "url": `${SITE_URL}/gallery/`
-  };
+  const schemaJson = buildPageGraph([
+    {
+      "@type": "CollectionPage",
+      "@id": `${SITE_URL}/gallery/#webpage`,
+      "url": `${SITE_URL}/gallery/`,
+      "name": "معرض الصور — نضار للتنظيف بجدة | صور خدمات تنظيف المنازل",
+      "description": "استعرض صور أعمال شركة نضار للتنظيف بجدة في تنظيف المنازل، الفلل، المفروشات والواجهات بأحدث المعدات. شاهد جودة خدماتنا واطلب معاينتك الآن."
+    },
+    getBreadcrumbsEntity([
+      { name: 'الرئيسية', path: '/' },
+      { name: 'معرض الصور', path: '/gallery/' }
+    ])
+  ]);
 
   const content = `
   <!-- Breadcrumbs -->
@@ -1310,12 +1342,19 @@ function buildGalleryPage() {
  * 7. Privacy Policy Page (/privacy-policy/)
  */
 function buildPrivacyPage() {
-  const schemaJson = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "سياسة الخصوصية — نضار للتنظيف بجدة",
-    "url": `${SITE_URL}/privacy-policy/`
-  };
+  const schemaJson = buildPageGraph([
+    {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/privacy-policy/#webpage`,
+      "url": `${SITE_URL}/privacy-policy/`,
+      "name": "سياسة الخصوصية — نضار للتنظيف بجدة | حماية بيانات العملاء",
+      "description": "اطلع على سياسة الخصوصية لشركة نضار للتنظيف بجدة. نلتزم بحماية بياناتك الشخصية وسريتها وفق أعلى المعايير الرسمية المتبعة. تواصل معنا لأي استفسار."
+    },
+    getBreadcrumbsEntity([
+      { name: 'الرئيسية', path: '/' },
+      { name: 'سياسة الخصوصية', path: '/privacy-policy/' }
+    ])
+  ]);
 
   const content = `
   <!-- Breadcrumbs -->
@@ -1397,12 +1436,19 @@ function buildPrivacyPage() {
  * 8. Terms and Conditions Page (/terms-and-conditions/)
  */
 function buildTermsPage() {
-  const schemaJson = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "الشروط والأحكام — نضار للتنظيف بجدة",
-    "url": `${SITE_URL}/terms-and-conditions/`
-  };
+  const schemaJson = buildPageGraph([
+    {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/terms-and-conditions/#webpage`,
+      "url": `${SITE_URL}/terms-and-conditions/`,
+      "name": "الشروط والأحكام — شركة نضار للتنظيف بجدة | ضوابط الخدمة",
+      "description": "الشروط والأحكام الرسمية المنظمة لخدمات شركة نضار للتنظيف بجدة، معايير تقديم الخدمة، سياسات الحجز والإلغاء والضمان. تعرف على الشروط وتواصل معنا."
+    },
+    getBreadcrumbsEntity([
+      { name: 'الرئيسية', path: '/' },
+      { name: 'الشروط والأحكام', path: '/terms-and-conditions/' }
+    ])
+  ]);
 
   const content = `
   <!-- Breadcrumbs -->

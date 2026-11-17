@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { wrapPage, blogList, servicesList, SITE_URL, FULL_BRAND } = require('./template');
+const { BUSINESS_ID, buildPageGraph, getArticleEntity, getBreadcrumbsEntity } = require('./schema-generator');
 
 function ensureDir(filePath) {
   const dir = path.dirname(filePath);
@@ -20,32 +21,27 @@ function writeHtml(relPath, html) {
  * 1. Blog Index Page (/blog/)
  */
 function buildBlogIndexPage() {
-  const schemaJson = {
-    "@context": "https://schema.org",
+  const blogEntity = {
     "@type": "Blog",
-    "name": "مدونة نضار للتنظيف بجدة",
-    "description": "دليل تثقيفي متكامل يحتوي على نصائح وإرشادات عملية للحفاظ على نظافة المنازل، الفلل، والمفروشات بجدة.",
-    "url": `${SITE_URL}/blog/`
+    "@id": `${SITE_URL}/blog/#blog`,
+    "url": `${SITE_URL}/blog/`,
+    "name": "مدونة نضار للتنظيف بجدة — مقالات وإرشادات العناية بالمنزل",
+    "description": "مقالات وإرشادات خبراء شركة نضار للتنظيف بجدة: تنظيف الكنب، السيراميك، التشطيب، ودليل الأسعار الشامل. استكشف المقالات وتعلم أفضل طرق العناية ببيتك.",
+    "publisher": {
+      "@id": BUSINESS_ID
+    },
+    "inLanguage": "ar"
   };
 
-  const breadcrumbsSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "الرئيسية",
-        "item": SITE_URL
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "المدونة",
-        "item": `${SITE_URL}/blog/`
-      }
-    ]
-  };
+  const breadcrumbsEntity = getBreadcrumbsEntity([
+    { name: 'الرئيسية', path: '/' },
+    { name: 'المدونة', path: '/blog/' }
+  ]);
+
+  const schemaJson = buildPageGraph([
+    blogEntity,
+    breadcrumbsEntity
+  ]);
 
   const content = `
   <!-- Breadcrumbs -->
@@ -117,7 +113,7 @@ function buildBlogIndexPage() {
     title: 'مدونة نضار للتنظيف بجدة — مقالات وإرشادات العناية بالمنزل',
     description: 'مقالات وإرشادات خبراء شركة نضار للتنظيف بجدة: تنظيف الكنب، السيراميك، التشطيب، ودليل الأسعار الشامل. استكشف المقالات وتعلم أفضل طرق العناية ببيتك.',
     canonicalPath: '/blog/',
-    schemaJson: [schemaJson, breadcrumbsSchema],
+    schemaJson,
     content
   });
 
@@ -456,57 +452,25 @@ const articlesData = {
 };
 
 function buildSingleBlogArticle(data) {
-  const schemaJson = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": data.title,
-    "description": data.metaDesc,
-    "image": `${SITE_URL}${data.image}`,
-    "datePublished": data.datePublished,
-    "dateModified": data.datePublished,
-    "author": {
-      "@type": "Organization",
-      "name": FULL_BRAND,
-      "url": SITE_URL
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": FULL_BRAND,
-      "logo": {
-        "@type": "ImageObject",
-        "url": `${SITE_URL}/assets/images/brand/logo.webp`
-      }
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": `${SITE_URL}/blog/${data.slug}/`
-    }
-  };
+  const articleEntity = getArticleEntity({
+    slug: data.slug,
+    title: data.title,
+    description: data.metaDesc,
+    image: data.image,
+    datePublished: data.datePublished,
+    dateModified: data.datePublished
+  });
 
-  const breadcrumbsSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "الرئيسية",
-        "item": SITE_URL
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "المدونة",
-        "item": `${SITE_URL}/blog/`
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": data.title,
-        "item": `${SITE_URL}/blog/${data.slug}/`
-      }
-    ]
-  };
+  const breadcrumbsEntity = getBreadcrumbsEntity([
+    { name: 'الرئيسية', path: '/' },
+    { name: 'المدونة', path: '/blog/' },
+    { name: data.title, path: `/blog/${data.slug}/` }
+  ]);
+
+  const schemaJson = buildPageGraph([
+    articleEntity,
+    breadcrumbsEntity
+  ]);
 
   const content = `
   <!-- Breadcrumbs -->
@@ -612,7 +576,7 @@ function buildSingleBlogArticle(data) {
     title: data.title,
     description: data.metaDesc,
     canonicalPath: `/blog/${data.slug}/`,
-    schemaJson: [schemaJson, breadcrumbsSchema],
+    schemaJson,
     content,
     heroPreload: data.image,
     ogImage: data.image

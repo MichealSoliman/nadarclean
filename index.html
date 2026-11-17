@@ -40,44 +40,163 @@
   <!-- Structured Data JSON-LD -->
   <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "HomeAndConstructionBusiness",
-  "name": "نضار للتنظيف بجدة — NADAR CLEANING",
-  "alternateName": "نضار للتنظيف",
-  "url": "https://nadarclean.com",
-  "logo": "https://nadarclean.com/assets/images/brand/logo.webp",
-  "image": "https://nadarclean.com/assets/images/hero/logo.webp",
-  "description": "شركة نضار للتنظيف بجدة تقدم خدمات متكاملة لتنظيف المنازل والفلل والمفروشات والمكاتب، بأعلى معايير النظافة والاحترافية والاهتمام بالتفاصيل.",
-  "telephone": "+966533553620",
-  "email": "info@nadarclean.com",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Jeddah",
-    "addressCountry": "SA",
-    "streetAddress": "[TODO: عنوان المقر أو اكتب منطقة الخدمة فقط]"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": "21.5433",
-    "longitude": "39.1728"
-  },
-  "areaServed": {
-    "@type": "City",
-    "name": "Jeddah"
-  },
-  "priceRange": "$$",
-  "openingHoursSpecification": [
+  "@graph": [
     {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Saturday",
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday"
+      "@type": [
+        "LocalBusiness",
+        "CleaningService"
       ],
-      "opens": "08:00",
-      "closes": "22:00"
+      "@id": "https://nadarclean.com/#business",
+      "name": "شركة نضار للتنظيف بجدة",
+      "alternateName": [
+        "نضار كلين",
+        "NADAR CLEANING"
+      ],
+      "url": "https://nadarclean.com",
+      "logo": "https://nadarclean.com/assets/images/brand/logo.webp",
+      "image": "https://nadarclean.com/assets/images/brand/logo.webp",
+      "telephone": "+966533553620",
+      "email": "info@nadarclean.com",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "جدة",
+        "addressCountry": "SA",
+        "streetAddress": "[TODO: عنوان المقر]"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "جدة"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "أبحر الشمالية"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "أبحر الجنوبية"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي الروضة"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي السلامة"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي المحمدية"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي المرجان"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي الشاطئ"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي الحمراء"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي النعيم"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي الزهراء"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي الصفا"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي المروة"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي السامر"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي التيسير"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي البساتين"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي الفيصلية"
+        }
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Saturday",
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday"
+          ],
+          "opens": "08:00",
+          "closes": "22:00"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://nadarclean.com/#website",
+      "url": "https://nadarclean.com/",
+      "name": "نضار للتنظيف بجدة — NADAR CLEANING",
+      "description": "شركة نضار للتنظيف بجدة: خدمات تنظيف شاملة للمنازل، الفلل، الشقق، الكنب، السجاد، والمكاتب.",
+      "publisher": {
+        "@id": "https://nadarclean.com/#business"
+      },
+      "inLanguage": "ar"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "كيف يمكنني حجز موعد تنظيف لدى شركة نضار؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "يمكنك الحجز بسهولة عبر الاتصال المباشر برقم الهاتف، أو إرسال رسالة واتساب توضح نوع العقار وحجمه والموعد المفضل. يقوم فريق خدمة العملاء بتأكيد التفاصيل وتزويدك بعرض السعر المناسب فوراً."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل أحتاج لتوفير أي مواد أو أدوات تنظيف من جانبي؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نحن نحضر معنا كافة المعدات الاحترافية (مكانس شفط صناعية، أجهزة بخار، ماكينات جلي وتلميع الأرضيات) والمنظفات المتخصصة المصرحة. لا يُطلب من العميل سوى توفير مصدر للماء والكهرباء في الموقع."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما هي العوامل التي تحدد تكلفة خدمة التنظيف؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "تعتمد التكلفة على مساحة العقار الإجمالية، وعدد الغرف ودورات المياه، ونوع التنظيف (تنظيف دوري معتاد، تنظيف عميق، أو تنظيف بعد التشطيب)، ووجود خدمات إضافية مثل غسيل الكنب والمفروشات. يمكنك قراءة التفاصيل الكاملة في صفحة معايير الأسعار."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "كم تستغرق عملية التنظيف عادة؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "تتراوح المدة للشقق المتوسطة بين 3 إلى 5 ساعات، بينما تتطلب الفلل الكبيرة أو أعمال ما بعد التشطيب يوماً كاملاً أو أكثر بحسب حجم الفريق وحجم العمل. نحرص دائماً على الالتزام بالوقت المتفق عليه مسبقاً."
+          }
+        }
+      ]
     }
   ]
 }</script>

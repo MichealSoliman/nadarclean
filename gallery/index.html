@@ -40,10 +40,141 @@
   <!-- Structured Data JSON-LD -->
   <script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "ImageGallery",
-  "name": "معرض الصور — نضار للتنظيف بجدة",
-  "description": "استعرض صوراً تمثل مجالات خدمات التنظيف المختلفة لدى نضار للتنظيف بجدة للمنازل والمفروشات والمكاتب.",
-  "url": "https://nadarclean.com/gallery/"
+  "@graph": [
+    {
+      "@type": [
+        "LocalBusiness",
+        "CleaningService"
+      ],
+      "@id": "https://nadarclean.com/#business",
+      "name": "شركة نضار للتنظيف بجدة",
+      "alternateName": [
+        "نضار كلين",
+        "NADAR CLEANING"
+      ],
+      "url": "https://nadarclean.com",
+      "logo": "https://nadarclean.com/assets/images/brand/logo.webp",
+      "image": "https://nadarclean.com/assets/images/brand/logo.webp",
+      "telephone": "+966533553620",
+      "email": "info@nadarclean.com",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "جدة",
+        "addressCountry": "SA",
+        "streetAddress": "[TODO: عنوان المقر]"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "جدة"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "أبحر الشمالية"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "أبحر الجنوبية"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي الروضة"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي السلامة"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي المحمدية"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي المرجان"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي الشاطئ"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي الحمراء"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي النعيم"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي الزهراء"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي الصفا"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي المروة"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي السامر"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي التيسير"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي البساتين"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "حي الفيصلية"
+        }
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Saturday",
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday"
+          ],
+          "opens": "08:00",
+          "closes": "22:00"
+        }
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://nadarclean.com/gallery/#webpage",
+      "url": "https://nadarclean.com/gallery/",
+      "name": "معرض الصور — نضار للتنظيف بجدة | صور خدمات تنظيف المنازل",
+      "description": "استعرض صور أعمال شركة نضار للتنظيف بجدة في تنظيف المنازل، الفلل، المفروشات والواجهات بأحدث المعدات. شاهد جودة خدماتنا واطلب معاينتك الآن."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "الرئيسية",
+          "item": "https://nadarclean.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "معرض الصور",
+          "item": "https://nadarclean.com/gallery/"
+        }
+      ]
+    }
+  ]
 }</script>
 </head>
 <body class="bg-ivory-100 text-charcoal font-sans antialiased min-h-screen flex flex-col">
