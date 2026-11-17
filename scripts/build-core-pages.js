@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { wrapPage, servicesList, blogList, SITE_URL, FULL_BRAND, PHONE_DISPLAY, PHONE_INT, WHATSAPP_URL, EMAIL, LOCATION, getServiceIconSvg } = require('./template');
+const { wrapPage, servicesList, blogList, SITE_URL, FULL_BRAND, PHONE_DISPLAY, PHONE_INT, WHATSAPP_URL, EMAIL, LOCATION, ADDRESS_NOTE, WORKING_HOURS_DISPLAY, HERO_IMAGE_PATH, HERO_IMAGE_ALT, getServiceIconSvg } = require('./template');
 
 function ensureDir(filePath) {
   const dir = path.dirname(filePath);
@@ -27,14 +27,15 @@ function buildHomePage() {
     "alternateName": "نضار للتنظيف",
     "url": SITE_URL,
     "logo": `${SITE_URL}/assets/images/brand/logo.webp`,
-    "image": `${SITE_URL}/assets/images/hero/logo.webp`,
+    "image": `${SITE_URL}${HERO_IMAGE_PATH}`,
     "description": "شركة نضار للتنظيف بجدة تقدم خدمات متكاملة لتنظيف المنازل والفلل والمفروشات والمكاتب، بأعلى معايير النظافة والاحترافية والاهتمام بالتفاصيل.",
     "telephone": PHONE_INT,
     "email": EMAIL,
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Jeddah",
-      "addressCountry": "SA"
+      "addressCountry": "SA",
+      "streetAddress": ADDRESS_NOTE
     },
     "geo": {
       "@type": "GeoCoordinates",
@@ -52,12 +53,6 @@ function buildHomePage() {
         "dayOfWeek": ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
         "opens": "08:00",
         "closes": "22:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Friday"],
-        "opens": "13:00",
-        "closes": "21:00"
       }
     ]
   };
@@ -121,7 +116,7 @@ function buildHomePage() {
         <div class="lg:col-span-5 relative">
           <div class="relative mx-auto max-w-md lg:max-w-none">
             <div class="relative rounded-3xl overflow-hidden shadow-float border-4 border-white aspect-[4/3] sm:aspect-[5/4]">
-              <img src="/assets/images/hero/logo.webp" alt="صالة معيشة فاخرة ونظيفة ذات إضاءة طبيعية وأثاث مرتب بجدة" width="800" height="640" class="w-full h-full object-cover">
+              <img src="${HERO_IMAGE_PATH}" alt="${HERO_IMAGE_ALT}" width="800" height="640" class="w-full h-full object-cover">
             </div>
 
             <!-- Floating Badge Card -->
@@ -481,7 +476,7 @@ function buildHomePage() {
     canonicalPath: '/',
     schemaJson,
     content,
-    heroPreload: '/assets/images/hero/logo.webp'
+    heroPreload: HERO_IMAGE_PATH
   });
 
   writeHtml('index.html', html);
@@ -738,8 +733,8 @@ function buildContactPage() {
             </div>
             <div>
               <div class="text-xs text-muted-500 font-semibold mb-1">أوقات العمل المعتمدة</div>
-              <div class="text-sm font-bold text-charcoal">السبت - الخميس: 8:00 ص - 10:00 م</div>
-              <div class="text-sm font-bold text-charcoal mt-0.5">الجمعة: 1:00 م - 9:00 م</div>
+              <div class="text-sm font-bold text-charcoal">${WORKING_HOURS_DISPLAY}</div>
+              <div class="text-xs text-muted-500 mt-0.5">الجمعة: عطلة أسبوعية</div>
             </div>
           </div>
 
@@ -751,6 +746,7 @@ function buildContactPage() {
             <div>
               <div class="text-xs text-muted-500 font-semibold mb-1">نطاق التغطية والموقع</div>
               <div class="text-sm font-bold text-charcoal">${LOCATION}</div>
+              <div class="text-xs text-charcoal/80 font-medium mt-0.5">${ADDRESS_NOTE}</div>
               <div class="text-xs text-muted-500 mt-1">خدمة ميدانية مباشرة لكافة أحياء شمال، وسط، وجنوب جدة</div>
             </div>
           </div>
@@ -837,7 +833,7 @@ function buildContactPage() {
 
   const html = wrapPage({
     title: 'اتصل بنا — شركة نضار للتنظيف بجدة | حجز واستفسار مباشر',
-    description: 'تواصل مع شركة نضار للتنظيف بجدة. هاتف: 0500000000، واتساب مباشر، نموذج حجز تسعير، وساعات العمل المعتمدة لكافة أحياء جدة.',
+    description: `تواصل مع شركة نضار للتنظيف بجدة. هاتف: ${PHONE_DISPLAY}، واتساب مباشر، نموذج حجز تسعير، وساعات العمل المعتمدة لكافة أحياء جدة.`,
     canonicalPath: '/contact/',
     schemaJson,
     content
@@ -1024,7 +1020,7 @@ function buildFaqPage() {
         "name": "كيف يمكنني حجز موعد تنظيف لدى شركة نضار بجدة؟",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "يمكنك الحجز بسهولة عبر الاتصال بالهاتف 0500000000 أو المراسلة عبر الواتساب لتحديد نوع الخدمة واليوم والوقت المناسب لك."
+          "text": `يمكنك الحجز بسهولة عبر الاتصال بالهاتف ${PHONE_DISPLAY} أو المراسلة عبر الواتساب لتحديد نوع الخدمة واليوم والوقت المناسب لك.`
         }
       },
       {

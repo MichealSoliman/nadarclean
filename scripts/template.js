@@ -1,14 +1,19 @@
 const fs = require('fs');
 const path = require('path');
+const SITE_CONFIG = require('./site-config');
 
-const SITE_URL = 'https://nadarclean.com';
-const BRAND_NAME = 'نضار';
-const FULL_BRAND = 'نضار للتنظيف بجدة — NADAR CLEANING';
-const PHONE_DISPLAY = '0500000000';
-const PHONE_INT = '+966500000000';
-const WHATSAPP_URL = 'https://wa.me/966500000000';
-const EMAIL = 'info@nadarclean.com';
-const LOCATION = 'جدة، المملكة العربية السعودية';
+const SITE_URL = SITE_CONFIG.siteUrl;
+const BRAND_NAME = SITE_CONFIG.brandName;
+const FULL_BRAND = SITE_CONFIG.fullBrand;
+const PHONE_DISPLAY = SITE_CONFIG.phoneDisplay;
+const PHONE_INT = SITE_CONFIG.phoneInt;
+const WHATSAPP_URL = SITE_CONFIG.whatsappBaseUrl;
+const EMAIL = SITE_CONFIG.email;
+const LOCATION = SITE_CONFIG.location;
+const ADDRESS_NOTE = SITE_CONFIG.addressNote;
+const WORKING_HOURS_DISPLAY = SITE_CONFIG.workingHoursDisplay;
+const HERO_IMAGE_PATH = SITE_CONFIG.heroImagePath;
+const HERO_IMAGE_ALT = SITE_CONFIG.heroImageAlt;
 
 // Common Service Items for Menus and Internal Links
 const servicesList = [
@@ -268,7 +273,8 @@ function renderHeader(currentPath) {
 /**
  * Generate Footer Component
  */
-function renderFooter() {
+function renderFooter(customWhatsAppUrl) {
+  const footerWhatsAppUrl = customWhatsAppUrl || WHATSAPP_URL;
   return `
   <!-- Conversion Callout Section -->
   <section class="bg-gradient-to-br from-emerald-800 to-teal-800 text-white py-16 px-4">
@@ -284,7 +290,7 @@ function renderFooter() {
             <span>احجز موعدك الآن</span>
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </a>
-          <a href="${WHATSAPP_URL}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-4 rounded-xl font-medium bg-emerald-900/60 hover:bg-emerald-900 text-white border border-teal-500/30 transition">
+          <a href="${footerWhatsAppUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-4 rounded-xl font-medium bg-emerald-900/60 hover:bg-emerald-900 text-white border border-teal-500/30 transition">
             <svg class="w-5 h-5 text-teal-400" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
             <span>استفسار واتساب: ${PHONE_DISPLAY}</span>
           </a>
@@ -358,9 +364,15 @@ function renderFooter() {
 
       <!-- Contact Bar -->
       <div class="py-6 flex flex-wrap items-center justify-between gap-4 border-b border-white/5 text-sm text-ivory-200/80">
-        <div class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-teal-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          <span>الموقع: ${LOCATION}</span>
+        <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-teal-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            <span>الموقع: ${LOCATION}</span>
+          </div>
+          <span class="hidden sm:inline text-white/20">|</span>
+          <div class="text-xs text-ivory-200/70">
+            <span>العنوان: ${ADDRESS_NOTE}</span>
+          </div>
         </div>
         <div class="flex items-center gap-6">
           <a href="tel:${PHONE_INT}" class="flex items-center gap-2 hover:text-teal-400 transition" dir="ltr">
@@ -399,7 +411,7 @@ function renderFooter() {
     </button>
     
     <!-- WhatsApp Floating Action -->
-    <a href="${WHATSAPP_URL}" target="_blank" rel="noopener noreferrer" aria-label="محادثة واتساب مباشرة مع نضار للتنظيف" class="w-13 h-13 p-3.5 rounded-full bg-[#25D366] text-white shadow-float hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center relative group">
+    <a href="${footerWhatsAppUrl}" target="_blank" rel="noopener noreferrer" aria-label="محادثة واتساب مباشرة مع نضار للتنظيف" class="w-13 h-13 p-3.5 rounded-full bg-[#25D366] text-white shadow-float hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center relative group">
       <span class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-red-500 rounded-full border-2 border-white animate-ping"></span>
       <span class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-red-500 rounded-full border-2 border-white"></span>
       <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
@@ -412,8 +424,9 @@ function renderFooter() {
 /**
  * Base Page Layout Wrapper
  */
-function wrapPage({ title, description, canonicalPath, schemaJson, content, heroPreload }) {
+function wrapPage({ title, description, canonicalPath, schemaJson, content, heroPreload, customWhatsAppUrl }) {
   const fullCanonical = `${SITE_URL}${canonicalPath}`;
+  const metaHeroImage = `${SITE_URL}${HERO_IMAGE_PATH}`;
   return `<!DOCTYPE html>
 <html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
@@ -428,7 +441,7 @@ function wrapPage({ title, description, canonicalPath, schemaJson, content, hero
   <meta property="og:url" content="${fullCanonical}">
   <meta property="og:title" content="${title}">
   <meta property="og:description" content="${description}">
-  <meta property="og:image" content="${SITE_URL}/assets/images/hero/logo.webp">
+  <meta property="og:image" content="${metaHeroImage}">
   <meta property="og:locale" content="ar_SA">
   <meta property="og:site_name" content="${FULL_BRAND}">
 
@@ -436,7 +449,7 @@ function wrapPage({ title, description, canonicalPath, schemaJson, content, hero
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${title}">
   <meta name="twitter:description" content="${description}">
-  <meta name="twitter:image" content="${SITE_URL}/assets/images/hero/logo.webp">
+  <meta name="twitter:image" content="${metaHeroImage}">
 
   <!-- Icons & Webmanifest -->
   <link rel="icon" type="image/svg+xml" href="/assets/images/brand/favicon.svg">
@@ -463,7 +476,7 @@ function wrapPage({ title, description, canonicalPath, schemaJson, content, hero
     ${content}
   </main>
 
-  ${renderFooter()}
+  ${renderFooter(customWhatsAppUrl)}
 
   <!-- Main JavaScript Bundle -->
   <script src="/assets/js/main.js" defer></script>
@@ -472,6 +485,7 @@ function wrapPage({ title, description, canonicalPath, schemaJson, content, hero
 }
 
 module.exports = {
+  SITE_CONFIG,
   SITE_URL,
   BRAND_NAME,
   FULL_BRAND,
@@ -480,6 +494,10 @@ module.exports = {
   WHATSAPP_URL,
   EMAIL,
   LOCATION,
+  ADDRESS_NOTE,
+  WORKING_HOURS_DISPLAY,
+  HERO_IMAGE_PATH,
+  HERO_IMAGE_ALT,
   servicesList,
   blogList,
   renderHeader,

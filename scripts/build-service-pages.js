@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { wrapPage, servicesList, SITE_URL, FULL_BRAND, PHONE_DISPLAY, PHONE_INT, WHATSAPP_URL, getServiceIconSvg } = require('./template');
+const { wrapPage, servicesList, SITE_CONFIG, SITE_URL, FULL_BRAND, PHONE_DISPLAY, PHONE_INT, WHATSAPP_URL, getServiceIconSvg } = require('./template');
 
 function ensureDir(filePath) {
   const dir = path.dirname(filePath);
@@ -510,6 +510,11 @@ const servicePagesData = {
 };
 
 function buildSingleServicePage(data) {
+  const serviceInfo = servicesList.find(s => s.slug === data.slug);
+  const serviceLabel = serviceInfo ? serviceInfo.name : data.targetKeyword;
+  const waCustomText = `السلام عليكم، أريد عرض سعر لخدمة ${serviceLabel} في جدة`;
+  const serviceWhatsAppUrl = SITE_CONFIG.getWhatsAppUrl(waCustomText);
+
   const schemaJson = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -586,7 +591,7 @@ function buildSingleServicePage(data) {
               <span>طلب عرض سعر مباشر</span>
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
-            <a href="${WHATSAPP_URL}" target="_blank" rel="noopener noreferrer" class="btn-secondary text-base px-6 py-4">
+            <a href="${serviceWhatsAppUrl}" target="_blank" rel="noopener noreferrer" class="btn-secondary text-base px-6 py-4">
               <span>استفسار واتساب</span>
             </a>
           </div>
@@ -790,7 +795,8 @@ function buildSingleServicePage(data) {
     canonicalPath: `/${data.slug}/`,
     schemaJson: [schemaJson, breadcrumbsSchema],
     content,
-    heroPreload: data.heroImg
+    heroPreload: data.heroImg,
+    customWhatsAppUrl: serviceWhatsAppUrl
   });
 
   writeHtml(`${data.slug}/index.html`, html);
