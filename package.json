@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:html": "node ./scripts/build-core-pages.js && node ./scripts/build-service-pages.js && node ./scripts/build-blog-pages.js",
+    "build:html": "node ./scripts/build-core-pages.js && node ./scripts/build-service-pages.js && node ./scripts/build-blog-pages.js && node ./scripts/build-sitemap.js",
     "build:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/style.css --minify",
     "build": "npm run build:html && npm run build:css",
     "watch:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/style.css --watch",

@@ -37,8 +37,8 @@ const servicesList = [
 const blogList = [
   {
     slug: 'home-cleaning-guide-jeddah',
-    title: 'دليل تنظيف المنزل بجدة: أفضل الطرق للحفاظ على نظافة البيت',
-    desc: 'خطة عملية مجربة لتنظيم تنظيف المنزل بجدة والتعامل مع رطوبة الساحل والغبار، وترتيب الأولويات اليومية والأسبوعية.',
+    title: 'دليل تنظيف المنزل بجدة — أفضل الطرق لحماية بيتك من الرطوبة',
+    desc: 'دليل شامل لتنظيم تنظيف المنزل بجدة: التعامل مع الرطوبة والغبار، جدول تنظيف أسبوعي واختيار المنظفات الصحيحة. اقرأ الدليل الكامل ونظف بيتك باحتراف.',
     category: 'نصائح منزلية',
     date: '2026-10-15',
     readTime: '6 دقائق قراءة',
@@ -47,7 +47,7 @@ const blogList = [
   {
     slug: 'how-to-clean-sofas',
     title: 'طريقة تنظيف الكنب وإزالة البقع والروائح دون إتلاف الأقمشة',
-    desc: 'تعرف على أنواع أقمشة الكنب ورموز العناية بها، وأفضل خطوات إزالة بقع القهوة والشاي والزيوت بأمان.',
+    desc: 'دليل عملي لطريقة تنظيف الكنب بجدة وإزالة بقع القهوة والزيوت دون إتلاف القماش. تعرف على رموز العناية بالأقمشة وطرق التعقيم. اقرأ التفاصيل الآن.',
     category: 'المفروشات والكنب',
     date: '2026-10-18',
     readTime: '5 دقائق قراءة',
@@ -55,8 +55,8 @@ const blogList = [
   },
   {
     slug: 'house-cleaning-prices-jeddah',
-    title: 'كم سعر تنظيف المنزل بجدة؟ العوامل التي تحدد تكلفة الخدمة',
-    desc: 'تحليل موضوعي للعوامل المحددة لأسعار تنظيف الشقق والفلل في جدة، وكيفية الحصول على عرض سعر دقيق وعادل.',
+    title: 'كم سعر تنظيف المنزل بجدة؟ العوامل المحددة لتكلفة الخدمة',
+    desc: 'دليل موضوعي يوضح عوامل تسعير تنظيف المنازل والفلل بجدة، الفارق بين التنظيف الدوري والعميق، وكيفية الحصول على عرض عادل. اكتشف الأسعار واحجز الآن.',
     category: 'دليل الأسعار',
     date: '2026-10-20',
     readTime: '7 دقائق قراءة',
@@ -64,8 +64,8 @@ const blogList = [
   },
   {
     slug: 'tile-grout-cleaning',
-    title: 'طريقة تنظيف السيراميك والفواصل وإزالة الدهون والترسبات',
-    desc: 'خطوات تنظيف فواصل الترويبة والسيراميك والبورسلين وإزالة التكلسات الجيرية بأمان دون خدش الأسطح.',
+    title: 'طريقة تنظيف السيراميك والفواصل وإزالة الدهون والتكلسات',
+    desc: 'خطوات تنظيف فواصل السيراميك والبورسلين وإزالة التكلسات الجيرية والدهون الصعبة بأمان، مع إرشادات حماية الرخام. اقرأ المقال الكامل وجرّب الخطوات الآن.',
     category: 'الأرضيات والأسطح',
     date: '2026-10-22',
     readTime: '5 دقائق قراءة',
@@ -73,8 +73,8 @@ const blogList = [
   },
   {
     slug: 'post-construction-cleaning-jeddah',
-    title: 'تنظيف المنزل بعد التشطيب بجدة: خطوات إزالة الغبار وبقايا البناء',
-    desc: 'الترتيب الصحيح لإزالة الغبار الإنشائي الدقيق، وبقايا الدهان والإسمنت من النوافذ والأرضيات لتسليم العقار جاهزاً للسكن.',
+    title: 'تنظيف المنزل بعد التشطيب بجدة — خطوات إزالة غبار البناء',
+    desc: 'خطوات تنظيف الفلل والشقق بعد التشطيب بجدة: إزالة غبار الجبس، التخلص من بقايا الدهان والإسمنت وتجهيز العقار للسكن. اقرأ النصائح واطلب خدمتك الآن.',
     category: 'ما بعد التشطيب',
     date: '2026-10-25',
     readTime: '6 دقائق قراءة',
@@ -424,9 +424,10 @@ function renderFooter(customWhatsAppUrl) {
 /**
  * Base Page Layout Wrapper
  */
-function wrapPage({ title, description, canonicalPath, schemaJson, content, heroPreload, customWhatsAppUrl }) {
+function wrapPage({ title, description, canonicalPath, schemaJson, content, heroPreload, customWhatsAppUrl, ogImage, is404 = false }) {
   const fullCanonical = `${SITE_URL}${canonicalPath}`;
-  const metaHeroImage = `${SITE_URL}${HERO_IMAGE_PATH}`;
+  const metaHeroImage = ogImage ? (ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogImage}`) : `${SITE_URL}${HERO_IMAGE_PATH}`;
+  const ogType = canonicalPath.startsWith('/blog/') && canonicalPath !== '/blog/' ? 'article' : 'website';
   return `<!DOCTYPE html>
 <html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
@@ -434,10 +435,10 @@ function wrapPage({ title, description, canonicalPath, schemaJson, content, hero
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title}</title>
   <meta name="description" content="${description}">
-  <link rel="canonical" href="${fullCanonical}">
+  ${is404 ? '<meta name="robots" content="noindex, follow">' : `<link rel="canonical" href="${fullCanonical}">`}
 
   <!-- Open Graph / Social Media -->
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="${ogType}">
   <meta property="og:url" content="${fullCanonical}">
   <meta property="og:title" content="${title}">
   <meta property="og:description" content="${description}">

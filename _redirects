@@ -1,0 +1,9 @@
+# Netlify Redirects for NADAR CLEANING (https://nadarclean.com)
+
+# Canonical Hostname: WWW to non-WWW + HTTPS
+http://nadarclean.com/*    https://nadarclean.com/:splat  301!
+http://www.nadarclean.com/* https://nadarclean.com/:splat  301!
+https://www.nadarclean.com/* https://nadarclean.com/:splat 301!
+
+# Custom 404
+/*    /404.html   404

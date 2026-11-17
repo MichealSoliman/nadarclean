@@ -7,5 +7,12 @@ Allow: /assets/css/
 Allow: /assets/js/
 Allow: /assets/images/
 
+# Disallow private and administrative paths
+Disallow: /admin/
+Disallow: /api/
+Disallow: /thank-you/
+Disallow: /*thank-you*
+Disallow: /404.html
+
 # Sitemap location
 Sitemap: https://nadarclean.com/sitemap.xml

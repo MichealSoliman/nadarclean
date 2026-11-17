@@ -265,7 +265,7 @@ function buildHomePage() {
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </div>
               <div>
-                <h4 class="font-bold text-charcoal text-base">احترام خصوصية المنازل والممتلكات</h4>
+                <h3 class="font-bold text-charcoal text-base">احترام خصوصية المنازل والممتلكات</h3>
                 <p class="text-sm text-muted-500 leading-relaxed">طواقم عمل منضبطة تلتزم بأعلى معايير الأمانة واللباقة أثناء العمل داخل المنازل والفلل.</p>
               </div>
             </div>
@@ -275,7 +275,7 @@ function buildHomePage() {
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
               </div>
               <div>
-                <h4 class="font-bold text-charcoal text-base">منظفات معتمدة وغير مؤذية للصحة</h4>
+                <h3 class="font-bold text-charcoal text-base">منظفات معتمدة وغير مؤذية للصحة</h3>
                 <p class="text-sm text-muted-500 leading-relaxed">نستخدم منظفات مخصصة خالية من الغازات الخانقة ومناسبة للعائلات والأطفال والحيوانات الأليفة.</p>
               </div>
             </div>
@@ -285,7 +285,7 @@ function buildHomePage() {
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </div>
               <div>
-                <h4 class="font-bold text-charcoal text-base">تسعير واضح ومحدد سلفاً</h4>
+                <h3 class="font-bold text-charcoal text-base">تسعير واضح ومحدد سلفاً</h3>
                 <p class="text-sm text-muted-500 leading-relaxed">لا مفاجآت في التكلفة؛ يتم توضيح نطاق العمل والعوامل المحددة للسعر بشفافية قبل البدء.</p>
               </div>
             </div>
@@ -471,7 +471,7 @@ function buildHomePage() {
   `;
 
   const html = wrapPage({
-    title: 'شركة تنظيف بجدة — نضار لخدمات تنظيف المنازل والفلل والمفروشات',
+    title: 'شركة تنظيف بجدة — نضار | خدمات تنظيف المنازل والفلل',
     description: 'شركة نضار للتنظيف بجدة: خدمات تنظيف شاملة للمنازل، الفلل، الشقق، الكنب، السجاد، والمكاتب. طواقم مدربة، أجهزة حديثة ومواد آمنة. احجز موعدك الآن.',
     canonicalPath: '/',
     schemaJson,
@@ -638,7 +638,7 @@ function buildAboutPage() {
 
   const html = wrapPage({
     title: 'من نحن — شركة نضار للتنظيف بجدة | رؤيتنا ومعايير الجودة',
-    description: 'تعرف على هوية نضار للتنظيف بجدة، فلسفة النقاء والعناية بأدق التفاصيل، بروتوكولات الأمانة وحماية ممتلكات العملاء أثناء تقديم الخدمة.',
+    description: 'تعرف على شركة نضار للتنظيف بجدة، معايير الجودة العالية، بروتوكولات الأمانة والعناية الفائقة بمنازلكم وممتلكاتكم. اكتشف خدماتنا وتواصل معنا اليوم.',
     canonicalPath: '/about/',
     schemaJson,
     content
@@ -833,7 +833,7 @@ function buildContactPage() {
 
   const html = wrapPage({
     title: 'اتصل بنا — شركة نضار للتنظيف بجدة | حجز واستفسار مباشر',
-    description: `تواصل مع شركة نضار للتنظيف بجدة. هاتف: ${PHONE_DISPLAY}، واتساب مباشر، نموذج حجز تسعير، وساعات العمل المعتمدة لكافة أحياء جدة.`,
+    description: `تواصل مع شركة نضار للتنظيف بجدة عبر الهاتف ${PHONE_DISPLAY} أو الواتساب، واستفد من خدمات تنظيف المنازل والفلل والمفروشات بأعلى جودة. احجز موعدك الآن.`,
     canonicalPath: '/contact/',
     schemaJson,
     content
@@ -997,8 +997,8 @@ function buildPricingPage() {
   `;
 
   const html = wrapPage({
-    title: 'معايير الأسعار — نضار للتنظيف بجدة | وضوح وشفافية التكلفة',
-    description: 'تعرف على العوامل المحددة لأسعار تنظيف المنازل، الفلل، الشقق والمفروشات بجدة لدى شركة نضار. سياسة تسعير عادلة دون رسوم خفية.',
+    title: 'أسعار شركات التنظيف بجدة — معايير نضار لتكلفة تنظيف المنازل',
+    description: 'دليل أسعار تنظيف المنازل والفلل والشقق بجدة لدى نضار. معايير تسعير شفافة وعادلة لكافة الخدمات دون أي تكاليف خفية. اطلب عرض سعرك المباشر الآن.',
     canonicalPath: '/pricing/',
     schemaJson,
     content
@@ -1200,7 +1200,7 @@ function buildFaqPage() {
 
   const html = wrapPage({
     title: 'الأسئلة الشائعة — نضار للتنظيف بجدة | إجابات الحجز والخدمات',
-    description: 'إجابات على الأسئلة الشائعة لشركة نضار للتنظيف بجدة: طرق الحجز، التجهيز المسبق، المنظفات والمعدات المستخدمة، وطرق الدفع والضمان.',
+    description: 'إجابات شاملة لأكثر الأسئلة الشائعة حول خدمات شركة نضار للتنظيف بجدة، خطوات المعاينة، المنظفات المعتمدة والأسعار. استكشف الأسئلة واحجز خدمتك معنا.',
     canonicalPath: '/faq/',
     schemaJson,
     content
@@ -1254,6 +1254,7 @@ function buildGalleryPage() {
   <!-- Gallery Grid -->
   <section class="py-20 bg-white">
     <div class="container-custom">
+      <h2 class="text-2xl md:text-3xl font-extrabold text-emerald-800 text-center mb-12">أعمال وخدمات نضار الميدانية في جدة</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         ${[
       { img: '/assets/images/services/house-cleaning.webp', title: 'تنظيف وتنسيق صالات المعيشة', tag: 'منازل' },
@@ -1295,8 +1296,8 @@ function buildGalleryPage() {
   `;
 
   const html = wrapPage({
-    title: 'معرض الصور — نضار للتنظيف بجدة | مجالات ونطاقات العمل',
-    description: 'استعرض معرض صور خدمات نضار للتنظيف بجدة: تنظيف المنازل، الفلل، الكنب، السجاد، والمطابخ، مع التزام تام بالشفافية البصرية.',
+    title: 'معرض الصور — نضار للتنظيف بجدة | صور خدمات تنظيف المنازل',
+    description: 'استعرض صور أعمال شركة نضار للتنظيف بجدة في تنظيف المنازل، الفلل، المفروشات والواجهات بأحدث المعدات. شاهد جودة خدماتنا واطلب معاينتك الآن.',
     canonicalPath: '/gallery/',
     schemaJson,
     content
@@ -1382,8 +1383,8 @@ function buildPrivacyPage() {
   `;
 
   const html = wrapPage({
-    title: 'سياسة الخصوصية — نضار للتنظيف بجدة | التزام تام بالأمان',
-    description: 'سياسة الخصوصية لشركة نضار للتنظيف بجدة. توضيح البيانات التي يتم جمعها، كيفية حمايتها، وعدم مشاركتها مع أطراف ثالثة.',
+    title: 'سياسة الخصوصية — نضار للتنظيف بجدة | حماية بيانات العملاء',
+    description: 'اطلع على سياسة الخصوصية لشركة نضار للتنظيف بجدة. نلتزم بحماية بياناتك الشخصية وسريتها وفق أعلى المعايير الرسمية المتبعة. تواصل معنا لأي استفسار.',
     canonicalPath: '/privacy-policy/',
     schemaJson,
     content
@@ -1462,8 +1463,8 @@ function buildTermsPage() {
   `;
 
   const html = wrapPage({
-    title: 'الشروط والأحكام — نضار للتنظيف بجدة | شروط الحجز والخدمة',
-    description: 'الشروط والأحكام المنظمة لخدمات نضار للتنظيف بجدة. سياسات الحجز، الإلغاء، المعاينة والتسليم ونطاق المسؤولية.',
+    title: 'الشروط والأحكام — شركة نضار للتنظيف بجدة | ضوابط الخدمة',
+    description: 'الشروط والأحكام الرسمية المنظمة لخدمات شركة نضار للتنظيف بجدة، معايير تقديم الخدمة، سياسات الحجز والإلغاء والضمان. تعرف على الشروط وتواصل معنا.',
     canonicalPath: '/terms-and-conditions/',
     schemaJson,
     content
@@ -1512,7 +1513,8 @@ function build404Page() {
     title: 'الصفحة غير موجودة (404) — نضار للتنظيف بجدة',
     description: 'عذراً، الصفحة المطلوبة غير متوفرة على موقع شركة نضار للتنظيف بجدة.',
     canonicalPath: '/404.html',
-    content
+    content,
+    is404: true
   });
 
   writeHtml('404.html', html);
