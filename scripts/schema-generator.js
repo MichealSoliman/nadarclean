@@ -54,7 +54,7 @@ function getLocalBusinessEntity() {
       "@type": "PostalAddress",
       "addressLocality": "جدة",
       "addressCountry": "SA",
-      "streetAddress": "[TODO: عنوان المقر]"
+      "streetAddress": "جدة، المملكة العربية السعودية"
     },
     "areaServed": [
       {
