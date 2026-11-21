@@ -171,7 +171,7 @@ function buildHomePage() {
           حلول تنظيف متكاملة تغطي كافة متطلباتك
         </h2>
         <p class="text-muted-500 text-base md:text-lg">
-          اختر الخدمة المناسبة لعقارك أو أثاثك من بين 14 خدمة تخصصية تغطي المنازل، الفلل، الشقق، المفروشات، والمنشآت التجارية بجدة.
+          اختر الخدمة المناسبة لعقارك أو أثاثك من بين 18 خدمة تخصصية تغطي المنازل، الفلل، الشقق، المفروشات، والمنشآت التجارية بجدة.
         </p>
       </div>
 
@@ -380,19 +380,17 @@ function buildHomePage() {
         </p>
       </div>
 
-      <div class="space-y-4 accordion-group">
+      <div class="space-y-4">
         ${homepageFaqs.map(faq => `
-          <div class="card-premium overflow-hidden border border-charcoal/5">
-            <button type="button" aria-expanded="false" class="accordion-header w-full p-5 text-right font-bold text-base md:text-lg text-emerald-800 flex justify-between items-center gap-4 hover:bg-mint/40 transition">
+          <details class="card-premium overflow-hidden border border-charcoal/5 group transition bg-white shadow-soft">
+            <summary class="w-full p-5 text-right font-bold text-base md:text-lg text-emerald-800 flex justify-between items-center gap-4 hover:bg-mint/40 transition cursor-pointer list-none [&::-webkit-details-marker]:hidden">
               <span>${faq.q}</span>
-              <svg class="accordion-icon w-5 h-5 text-teal-700 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <div class="accordion-content">
-              <div class="p-5 pt-0 text-sm md:text-base text-muted-500 leading-relaxed border-t border-charcoal/5">
-                ${faq.a}
-              </div>
+              <svg class="w-5 h-5 text-teal-700 transition-transform duration-300 flex-shrink-0 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div class="p-5 pt-3 text-sm md:text-base text-muted-500 leading-relaxed border-t border-charcoal/5 bg-ivory-100/30">
+              ${faq.a}
             </div>
-          </div>
+          </details>
         `).join('')}
       </div>
 
@@ -1131,41 +1129,35 @@ function buildFaqPage() {
         </h2>
         <div class="space-y-3 accordion-group">
           
-          <div class="card-premium overflow-hidden border border-charcoal/5">
-            <button type="button" aria-expanded="false" class="accordion-header w-full p-5 text-right font-bold text-base text-emerald-800 flex justify-between items-center gap-4 hover:bg-mint/40 transition">
+          <details class="card-premium overflow-hidden border border-charcoal/5 group transition bg-white shadow-soft">
+            <summary class="w-full p-5 text-right font-bold text-base text-emerald-800 flex justify-between items-center gap-4 hover:bg-mint/40 transition cursor-pointer list-none [&::-webkit-details-marker]:hidden">
               <span>قبل كم يوم ينبغي علي حجز موعد الخدمة؟</span>
-              <svg class="accordion-icon w-5 h-5 text-teal-700 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <div class="accordion-content">
-              <div class="p-5 pt-0 text-sm text-muted-500 leading-relaxed border-t border-charcoal/5">
-                يفضل الحجز قبل 24 إلى 48 ساعة لضمان توفير الموعد والوقت المفضل لك، خاصة خلال عطلات نهاية الأسبوع ومواسم الأعياد. وفي حال توفر شاغر بالجدول اليومي، يمكننا تقديم الخدمة في نفس اليوم.
-              </div>
+              <svg class="w-5 h-5 text-teal-700 transition-transform duration-300 flex-shrink-0 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div class="p-5 pt-3 text-sm text-muted-500 leading-relaxed border-t border-charcoal/5 bg-ivory-100/30">
+              يفضل الحجز قبل 24 إلى 48 ساعة لضمان توفير الموعد والوقت المفضل لك، خاصة خلال عطلات نهاية الأسبوع ومواسم الأعياد. وفي حال توفر شاغر بالجدول اليومي، يمكننا تقديم الخدمة في نفس اليوم.
             </div>
-          </div>
+          </details>
 
-          <div class="card-premium overflow-hidden border border-charcoal/5">
-            <button type="button" aria-expanded="false" class="accordion-header w-full p-5 text-right font-bold text-base text-emerald-800 flex justify-between items-center gap-4 hover:bg-mint/40 transition">
+          <details class="card-premium overflow-hidden border border-charcoal/5 group transition bg-white shadow-soft">
+            <summary class="w-full p-5 text-right font-bold text-base text-emerald-800 flex justify-between items-center gap-4 hover:bg-mint/40 transition cursor-pointer list-none [&::-webkit-details-marker]:hidden">
               <span>هل يمكن تعديل موعد الحجز أو إلغاؤه؟</span>
-              <svg class="accordion-icon w-5 h-5 text-teal-700 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <div class="accordion-content">
-              <div class="p-5 pt-0 text-sm text-muted-500 leading-relaxed border-t border-charcoal/5">
-                نعم بكل تأكيد، نرجو فقط إخطارنا قبل الموعد المتفق عليه بـ 12 ساعة على الأقل حتى نتمكن من إعادة ترتيب جدول الفريق دون أي رسوم إضافية.
-              </div>
+              <svg class="w-5 h-5 text-teal-700 transition-transform duration-300 flex-shrink-0 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div class="p-5 pt-3 text-sm text-muted-500 leading-relaxed border-t border-charcoal/5 bg-ivory-100/30">
+              نعم بكل تأكيد، نرجو فقط إخطارنا قبل الموعد المتفق عليه بـ 12 ساعة على الأقل حتى نتمكن من إعادة ترتيب جدول الفريق دون أي رسوم إضافية.
             </div>
-          </div>
+          </details>
 
-          <div class="card-premium overflow-hidden border border-charcoal/5">
-            <button type="button" aria-expanded="false" class="accordion-header w-full p-5 text-right font-bold text-base text-emerald-800 flex justify-between items-center gap-4 hover:bg-mint/40 transition">
+          <details class="card-premium overflow-hidden border border-charcoal/5 group transition bg-white shadow-soft">
+            <summary class="w-full p-5 text-right font-bold text-base text-emerald-800 flex justify-between items-center gap-4 hover:bg-mint/40 transition cursor-pointer list-none [&::-webkit-details-marker]:hidden">
               <span>هل يلزم تواجدي في المنزل طوال فترة التنظيف؟</span>
-              <svg class="accordion-icon w-5 h-5 text-teal-700 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <div class="accordion-content">
-              <div class="p-5 pt-0 text-sm text-muted-500 leading-relaxed border-t border-charcoal/5">
-                يلزم وجود العميل أو من ينوب عنه عند بدء العمل لشرح المتطلبات واستلام الموقع، وكذلك عند الانتهاء لتفقد جودة العمل واستلام الموقع رسمياً. أما أثناء سير العمل فيمكنك التواجد أو ممارسة مهامك بشكل طبيعي.
-              </div>
+              <svg class="w-5 h-5 text-teal-700 transition-transform duration-300 flex-shrink-0 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div class="p-5 pt-3 text-sm text-muted-500 leading-relaxed border-t border-charcoal/5 bg-ivory-100/30">
+              يلزم وجود العميل أو من ينوب عنه عند بدء العمل لشرح المتطلبات واستلام الموقع، وكذلك عند الانتهاء لتفقد جودة العمل واستلام الموقع رسمياً. أما أثناء سير العمل فيمكنك التواجد أو ممارسة مهامك بشكل طبيعي.
             </div>
-          </div>
+          </details>
 
         </div>
       </div>
@@ -1177,29 +1169,25 @@ function buildFaqPage() {
         </h2>
         <div class="space-y-3 accordion-group">
           
-          <div class="card-premium overflow-hidden border border-charcoal/5">
-            <button type="button" aria-expanded="false" class="accordion-header w-full p-5 text-right font-bold text-base text-emerald-800 flex justify-between items-center gap-4 hover:bg-mint/40 transition">
+          <details class="card-premium overflow-hidden border border-charcoal/5 group transition bg-white shadow-soft">
+            <summary class="w-full p-5 text-right font-bold text-base text-emerald-800 flex justify-between items-center gap-4 hover:bg-mint/40 transition cursor-pointer list-none [&::-webkit-details-marker]:hidden">
               <span>ما الذي ينبغي علي تجهيزه قبل وصول فريق التنظيف؟</span>
-              <svg class="accordion-icon w-5 h-5 text-teal-700 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <div class="accordion-content">
-              <div class="p-5 pt-0 text-sm text-muted-500 leading-relaxed border-t border-charcoal/5">
-                يُفضل حفظ المقتنيات الثمينة والأوراق الرسمية في أماكن مغلقة، وتوفير مصدر فعال للماء والكهرباء في الموقع، وإزاحة أي مقتنيات شخصية مبعثرة على الأسطح لتسهيل بدء العمل المباشر.
-              </div>
+              <svg class="w-5 h-5 text-teal-700 transition-transform duration-300 flex-shrink-0 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div class="p-5 pt-3 text-sm text-muted-500 leading-relaxed border-t border-charcoal/5 bg-ivory-100/30">
+              يُفضل حفظ المقتنيات الثمينة والأوراق الرسمية في أماكن مغلقة، وتوفير مصدر فعال للماء والكهرباء في الموقع، وإزاحة أي مقتنيات شخصية مبعثرة على الأسطح لتسهيل بدء العمل المباشر.
             </div>
-          </div>
+          </details>
 
-          <div class="card-premium overflow-hidden border border-charcoal/5">
-            <button type="button" aria-expanded="false" class="accordion-header w-full p-5 text-right font-bold text-base text-emerald-800 flex justify-between items-center gap-4 hover:bg-mint/40 transition">
+          <details class="card-premium overflow-hidden border border-charcoal/5 group transition bg-white shadow-soft">
+            <summary class="w-full p-5 text-right font-bold text-base text-emerald-800 flex justify-between items-center gap-4 hover:bg-mint/40 transition cursor-pointer list-none [&::-webkit-details-marker]:hidden">
               <span>كم يستغرق جفاف الكنب والسجاد بعد الغسيل؟</span>
-              <svg class="accordion-icon w-5 h-5 text-teal-700 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <div class="accordion-content">
-              <div class="p-5 pt-0 text-sm text-muted-500 leading-relaxed border-t border-charcoal/5">
-                بفضل ماكينات الشفط القوية التي تستخلص ما يقارب 85-90% من المياه، يستغرق الجفاف التام بين 3 إلى 6 ساعات في المتوسط، بالاعتماد على تهوية الغرفة وتشغيل التكييف أو المراوح.
-              </div>
+              <svg class="w-5 h-5 text-teal-700 transition-transform duration-300 flex-shrink-0 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div class="p-5 pt-3 text-sm text-muted-500 leading-relaxed border-t border-charcoal/5 bg-ivory-100/30">
+              بفضل ماكينات الشفط القوية التي تستخلص ما يقارب 85-90% من المياه، يستغرق الجفاف التام بين 3 إلى 6 ساعات في المتوسط، بالاعتماد على تهوية الغرفة وتشغيل التكييف أو المراوح.
             </div>
-          </div>
+          </details>
 
         </div>
       </div>
@@ -1211,29 +1199,25 @@ function buildFaqPage() {
         </h2>
         <div class="space-y-3 accordion-group">
           
-          <div class="card-premium overflow-hidden border border-charcoal/5">
-            <button type="button" aria-expanded="false" class="accordion-header w-full p-5 text-right font-bold text-base text-emerald-800 flex justify-between items-center gap-4 hover:bg-mint/40 transition">
+          <details class="card-premium overflow-hidden border border-charcoal/5 group transition bg-white shadow-soft">
+            <summary class="w-full p-5 text-right font-bold text-base text-emerald-800 flex justify-between items-center gap-4 hover:bg-mint/40 transition cursor-pointer list-none [&::-webkit-details-marker]:hidden">
               <span>ما هي طرق الدفع المتاحة لديكم؟</span>
-              <svg class="accordion-icon w-5 h-5 text-teal-700 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <div class="accordion-content">
-              <div class="p-5 pt-0 text-sm text-muted-500 leading-relaxed border-t border-charcoal/5">
-                نوفر خيارات دفع متعددة تشمل التحويل البنكي المباشر، والدفع النقدي عند التسليم، بالإضافة لمدى والبطاقات الائتمانية بحسب الاتفاق المسبق.
-              </div>
+              <svg class="w-5 h-5 text-teal-700 transition-transform duration-300 flex-shrink-0 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div class="p-5 pt-3 text-sm text-muted-500 leading-relaxed border-t border-charcoal/5 bg-ivory-100/30">
+              نوفر خيارات دفع متعددة تشمل التحويل البنكي المباشر، والدفع النقدي عند التسليم، بالإضافة لمدى والبطاقات الائتمانية بحسب الاتفاق المسبق.
             </div>
-          </div>
+          </details>
 
-          <div class="card-premium overflow-hidden border border-charcoal/5">
-            <button type="button" aria-expanded="false" class="accordion-header w-full p-5 text-right font-bold text-base text-emerald-800 flex justify-between items-center gap-4 hover:bg-mint/40 transition">
+          <details class="card-premium overflow-hidden border border-charcoal/5 group transition bg-white shadow-soft">
+            <summary class="w-full p-5 text-right font-bold text-base text-emerald-800 flex justify-between items-center gap-4 hover:bg-mint/40 transition cursor-pointer list-none [&::-webkit-details-marker]:hidden">
               <span>ماذا لو كان لدي ملاحظة على زاوية معينة بعد انتهاء العمل؟</span>
-              <svg class="accordion-icon w-5 h-5 text-teal-700 transition-transform duration-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <div class="accordion-content">
-              <div class="p-5 pt-0 text-sm text-muted-500 leading-relaxed border-t border-charcoal/5">
-                لا يغادر طاقم نضار الموقع إلا بعد قيامك بالمعاينة والتأكد من إتمام كل المتطلبات. وإذا وجدت أي ملاحظة أثناء المعاينة، يقوم الفريق بمعالجتها فوراً ودون أي تردد حتى تصل إلى الرضا الكامل.
-              </div>
+              <svg class="w-5 h-5 text-teal-700 transition-transform duration-300 flex-shrink-0 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div class="p-5 pt-3 text-sm text-muted-500 leading-relaxed border-t border-charcoal/5 bg-ivory-100/30">
+              لا يغادر طاقم نضار الموقع إلا بعد قيامك بالمعاينة والتأكد من إتمام كل المتطلبات. وإذا وجدت أي ملاحظة أثناء المعاينة، يقوم الفريق بمعالجتها فوراً ودون أي تردد حتى تصل إلى الرضا الكامل.
             </div>
-          </div>
+          </details>
 
         </div>
       </div>

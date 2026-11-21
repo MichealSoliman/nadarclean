@@ -117,3 +117,19 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #167D78;
 }
+
+/* Clean details/summary styling across all browsers */
+details summary::-webkit-details-marker {
+  display: none;
+}
+details summary {
+  list-style: none;
+}
+
+/* Ensure padding on mobile for sticky bottom call/whatsapp bar */
+@media (max-width: 639px) {
+  body {
+    padding-bottom: 64px;
+  }
+}
+
